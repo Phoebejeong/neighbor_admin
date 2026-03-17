@@ -34,12 +34,12 @@ export const PricingPage: React.FC<Props> = ({ onNavigate }) => (
       </div>
 
       {/* 알짜광고 */}
-      <div className="bg-white rounded-lg border-2 border-blue-500 p-6 flex flex-col relative shadow-sm">
+      <div className="bg-white rounded-lg border-2 border-[#ED1C24] p-6 flex flex-col relative shadow-sm">
         <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-          <span className="text-xs font-bold text-white bg-blue-600 px-3 py-1 rounded-full">인기</span>
+          <span className="text-xs font-bold text-white bg-[#ED1C24] px-3 py-1 rounded-full">인기</span>
         </div>
         <div className="mb-4">
-          <span className="text-xs font-bold text-blue-600">유료</span>
+          <span className="text-xs font-bold text-[#ED1C24]">유료</span>
         </div>
         <h3 className="text-xl font-bold">알짜광고</h3>
         <p className="text-gray-500 text-sm mt-1 mb-4">기간 한정 이벤트 홍보</p>
@@ -53,7 +53,7 @@ export const PricingPage: React.FC<Props> = ({ onNavigate }) => (
           <Feature text="입주민 앱 알짜광고 탭 노출" />
           <Feature text="홈 화면 슬라이더 노출" />
         </ul>
-        <button onClick={() => onNavigate('myads')} className="mt-6 w-full py-3 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold transition">
+        <button onClick={() => onNavigate('myads')} className="mt-6 w-full py-3 rounded-lg bg-[#222] hover:bg-[#333] text-white text-sm font-semibold transition">
           광고 신청하기
         </button>
       </div>
@@ -85,7 +85,7 @@ export const PricingPage: React.FC<Props> = ({ onNavigate }) => (
 
 const Feature: React.FC<{ text: string }> = ({ text }) => (
   <li className="flex items-center gap-2 text-sm text-gray-600">
-    <Check className="w-4 h-4 text-blue-500 shrink-0" />
+    <Check className="w-4 h-4 text-[#ED1C24] shrink-0" />
     {text}
   </li>
 );

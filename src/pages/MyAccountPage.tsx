@@ -173,7 +173,7 @@ export const MyAccountPage: React.FC<Props> = ({ name, email, phone, onSave, onB
                     type="button" onClick={sendCode}
                     disabled={!phoneChanged}
                     className={`px-4 py-2.5 rounded-lg text-sm font-semibold whitespace-nowrap transition ${
-                      codeSent ? 'bg-gray-100 text-gray-600 hover:bg-gray-200' : 'bg-blue-600 text-white hover:bg-blue-700'
+                      codeSent ? 'bg-gray-100 text-gray-600 hover:bg-gray-200' : 'bg-[#222] text-white hover:bg-[#333]'
                     } disabled:bg-gray-200 disabled:text-gray-400`}
                   >
                     {codeSent ? '재발송' : '인증번호 발송'}
@@ -239,7 +239,7 @@ export const MyAccountPage: React.FC<Props> = ({ name, email, phone, onSave, onB
           <button
             onClick={handleSave}
             disabled={!hasChanges}
-            className="flex-1 py-3 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold transition disabled:bg-gray-200 disabled:text-gray-400"
+            className="flex-1 py-3 rounded-lg bg-[#222] hover:bg-[#333] text-white text-sm font-semibold transition disabled:bg-gray-200 disabled:text-gray-400"
           >
             저장하기
           </button>

@@ -94,7 +94,7 @@ export const MyShoppingPage: React.FC<Props> = ({ items, setItems, shopName, sho
           <h2 className="text-xl font-bold pl-1">실속쇼핑 등록</h2>
           <p className="text-sm text-gray-500 mt-1">입주민 전용 할인 상품을 등록하세요 (유료)</p>
         </div>
-        <button onClick={openNew} className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2.5 rounded-lg text-sm font-semibold flex items-center gap-2 transition">
+        <button onClick={openNew} className="bg-[#222] hover:bg-[#333] text-white px-4 py-2.5 rounded-lg text-sm font-semibold flex items-center gap-2 transition">
           <Plus className="w-4 h-4" /> 상품 등록
         </button>
       </div>
@@ -104,7 +104,7 @@ export const MyShoppingPage: React.FC<Props> = ({ items, setItems, shopName, sho
 
           <p className="text-gray-500 font-medium">등록된 가게가 없습니다</p>
           <p className="text-sm text-gray-400 mt-1">상품을 등록하려면 먼저 가게를 등록해주세요</p>
-          <button onClick={() => onNavigate('myshop')} className="mt-4 bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-lg text-sm font-semibold transition">
+          <button onClick={() => onNavigate('myshop')} className="mt-4 bg-[#222] hover:bg-[#333] text-white px-5 py-2.5 rounded-lg text-sm font-semibold transition">
             가게 등록하기
           </button>
         </div>
@@ -123,7 +123,7 @@ export const MyShoppingPage: React.FC<Props> = ({ items, setItems, shopName, sho
           <p className="text-4xl mb-3">🛒</p>
           <p className="text-gray-500 font-medium">등록한 상품이 없습니다</p>
           <p className="text-sm text-gray-400 mt-1">입주민 전용 할인 상품을 등록해보세요</p>
-          <button onClick={openNew} className="mt-4 bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-lg text-sm font-semibold transition">
+          <button onClick={openNew} className="mt-4 bg-[#222] hover:bg-[#333] text-white px-5 py-2.5 rounded-lg text-sm font-semibold transition">
             첫 상품 등록하기
           </button>
         </div>
@@ -137,7 +137,7 @@ export const MyShoppingPage: React.FC<Props> = ({ items, setItems, shopName, sho
             return (
               <div key={item.id} className="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow">
                 <div className="flex">
-                  <div className={`w-1.5 shrink-0 ${isPaid ? 'bg-blue-500' : 'bg-amber-400'}`} />
+                  <div className={`w-1.5 shrink-0 ${isPaid ? 'bg-[#ED1C24]' : 'bg-amber-400'}`} />
                   <div className="flex-1">
                     {/* 상단: 상품명 + 판매처 + 액션 */}
                     <div className="flex items-center justify-between px-5 pt-5 pb-3">
@@ -269,7 +269,7 @@ export const MyShoppingPage: React.FC<Props> = ({ items, setItems, shopName, sho
 
             <div className="flex gap-2 pt-2">
               <button onClick={close} className="flex-1 py-2.5 rounded-lg border border-gray-200 text-sm font-medium text-gray-500 hover:bg-gray-50 transition">취소</button>
-              <button onClick={editing.id ? save : goApartments} className="flex-1 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold transition">{editing.id ? '저장' : '다음: 아파트 선택'}</button>
+              <button onClick={editing.id ? save : goApartments} className="flex-1 py-2.5 rounded-lg bg-[#222] hover:bg-[#333] text-white text-sm font-semibold transition">{editing.id ? '저장' : '다음: 아파트 선택'}</button>
             </div>
           </div>
         )}
@@ -286,7 +286,7 @@ export const MyShoppingPage: React.FC<Props> = ({ items, setItems, shopName, sho
             />
             <div className="flex gap-2 pt-2">
               <button onClick={() => setStep('form')} className="flex-1 py-2.5 rounded-lg border border-gray-200 text-sm font-medium text-gray-500 hover:bg-gray-50 transition">이전</button>
-              <button onClick={goConfirm} className="flex-1 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold transition">다음: 확인</button>
+              <button onClick={goConfirm} className="flex-1 py-2.5 rounded-lg bg-[#222] hover:bg-[#333] text-white text-sm font-semibold transition">다음: 확인</button>
             </div>
           </div>
         )}
@@ -319,7 +319,7 @@ export const MyShoppingPage: React.FC<Props> = ({ items, setItems, shopName, sho
             </div>
             <div className="flex gap-2 pt-2">
               <button onClick={() => setStep('apartments')} className="flex-1 py-2.5 rounded-lg border border-gray-200 text-sm font-medium text-gray-500 hover:bg-gray-50 transition">이전</button>
-              <button onClick={save} className="flex-1 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold transition">등록하기</button>
+              <button onClick={save} className="flex-1 py-2.5 rounded-lg bg-[#222] hover:bg-[#333] text-white text-sm font-semibold transition">등록하기</button>
             </div>
           </div>
         )}
@@ -338,12 +338,12 @@ const StepIndicator: React.FC<{ current: number }> = ({ current }) => (
       const done = step < current;
       return (
         <React.Fragment key={step}>
-          {i > 0 && <div className={`w-8 h-0.5 ${done ? 'bg-blue-500' : 'bg-gray-200'}`} />}
+          {i > 0 && <div className={`w-8 h-0.5 ${done ? 'bg-[#ED1C24]' : 'bg-gray-200'}`} />}
           <div className="flex items-center gap-1.5">
-            <div className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ${active ? 'bg-blue-600 text-white' : done ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-400'}`}>
+            <div className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ${active ? 'bg-[#ED1C24] text-white' : done ? 'bg-[#ED1C24] text-white' : 'bg-gray-200 text-gray-400'}`}>
               {done ? '✓' : step}
             </div>
-            <span className={`text-xs font-medium ${active ? 'text-blue-600' : 'text-gray-400'}`}>{label}</span>
+            <span className={`text-xs font-medium ${active ? 'text-[#ED1C24]' : 'text-gray-400'}`}>{label}</span>
           </div>
         </React.Fragment>
       );

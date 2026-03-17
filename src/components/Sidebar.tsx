@@ -83,7 +83,7 @@ export const TopNav: React.FC<Props> = ({ current, shopName, userEmail, onNaviga
                 onClick={() => onNavigate(key)}
                 className={`flex items-center gap-2 px-3 py-2.5 text-sm border-b-2 transition ${
                   current === key
-                    ? isAdmin ? 'border-amber-400 text-amber-400 font-bold' : 'border-blue-600 text-blue-600 font-bold'
+                    ? isAdmin ? 'border-amber-400 text-amber-400 font-bold' : 'border-[#222] text-[#222] font-bold'
                     : isAdmin ? 'border-transparent text-gray-400 hover:text-amber-400 font-medium' : 'border-transparent text-gray-500 hover:text-gray-900 font-medium'
                 }`}
               >
@@ -182,7 +182,7 @@ export const TopNav: React.FC<Props> = ({ current, shopName, userEmail, onNaviga
               onClick={() => onNavigate(key)}
               className={`flex items-center gap-1.5 px-3 py-2.5 text-sm whitespace-nowrap border-b-2 transition ${
                 current === key
-                  ? isAdmin ? 'border-amber-400 text-amber-400 font-bold' : 'border-blue-600 text-blue-600 font-bold'
+                  ? isAdmin ? 'border-amber-400 text-amber-400 font-bold' : 'border-[#222] text-[#222] font-bold'
                   : isAdmin ? 'border-transparent text-gray-400 hover:text-amber-400 font-medium' : 'border-transparent text-gray-500 hover:text-gray-900 font-medium'
               }`}
             >

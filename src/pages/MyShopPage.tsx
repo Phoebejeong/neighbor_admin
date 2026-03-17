@@ -103,7 +103,7 @@ export const MyShopPage: React.FC<Props> = ({ shops, setShops }) => {
         {canAdd && shops.length > 0 && (
           <button
             onClick={openCreate}
-            className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2.5 rounded-lg text-sm font-semibold flex items-center gap-2 transition"
+            className="bg-[#222] hover:bg-[#333] text-white px-4 py-2.5 rounded-lg text-sm font-semibold flex items-center gap-2 transition"
           >
             <Plus className="w-4 h-4" /> 가게 추가
           </button>
@@ -290,7 +290,7 @@ export const MyShopPage: React.FC<Props> = ({ shops, setShops }) => {
               <button onClick={closeModal} className="flex-1 py-3 rounded-lg border border-gray-200 text-sm font-medium text-gray-500 hover:bg-gray-50 transition">
                 취소
               </button>
-              <button onClick={handleSave} className="flex-1 py-3 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold transition">
+              <button onClick={handleSave} className="flex-1 py-3 rounded-lg bg-[#222] hover:bg-[#333] text-white text-sm font-semibold transition">
                 {modalMode === 'create' ? '가게 등록하기' : '저장하기'}
               </button>
             </div>

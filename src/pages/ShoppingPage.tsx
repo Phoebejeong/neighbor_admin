@@ -46,7 +46,7 @@ export const ShoppingPage: React.FC<Props> = ({ items, setItems, readOnly }) => 
           <p className="text-sm text-gray-500 mt-1">유료 등록 · 입주민 전용 할인 상품 관리</p>
         </div>
         {!readOnly && (
-          <button onClick={openNew} className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2.5 rounded-lg text-sm font-semibold flex items-center gap-2 transition">
+          <button onClick={openNew} className="bg-[#222] hover:bg-[#333] text-white px-4 py-2.5 rounded-lg text-sm font-semibold flex items-center gap-2 transition">
             <Plus className="w-4 h-4" /> 상품 등록
           </button>
         )}
@@ -134,7 +134,7 @@ export const ShoppingPage: React.FC<Props> = ({ items, setItems, readOnly }) => 
             </div>
             <div className="flex gap-2 pt-2">
               <button onClick={close} className="flex-1 py-2.5 rounded-lg border border-gray-200 text-sm font-medium text-gray-500 hover:bg-gray-50 transition">취소</button>
-              <button onClick={save} className="flex-1 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold transition">{editing.id ? '저장' : '등록하기'}</button>
+              <button onClick={save} className="flex-1 py-2.5 rounded-lg bg-[#222] hover:bg-[#333] text-white text-sm font-semibold transition">{editing.id ? '저장' : '등록하기'}</button>
             </div>
           </div>
         )}

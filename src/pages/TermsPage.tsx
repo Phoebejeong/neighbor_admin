@@ -116,7 +116,7 @@ export const TermsPage: React.FC<Props> = ({ onClose }) => (
     </div>
 
     <div className="sticky bottom-0 bg-white border-t border-gray-100 px-6 py-3 rounded-b-xl">
-      <button onClick={onClose} className="w-full py-2.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold transition">
+      <button onClick={onClose} className="w-full py-2.5 rounded-lg bg-[#222] hover:bg-[#333] text-white text-sm font-semibold transition">
         확인
       </button>
     </div>

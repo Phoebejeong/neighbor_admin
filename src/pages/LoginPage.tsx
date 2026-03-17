@@ -234,7 +234,7 @@ export const LoginPage: React.FC<Props> = ({ onLogin }) => {
             className={`px-4 py-2.5 rounded-lg text-sm font-semibold whitespace-nowrap transition ${
               vf ? 'bg-emerald-100 text-emerald-600 cursor-default'
                 : cs ? 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                  : 'bg-blue-600 text-white hover:bg-blue-700'
+                  : 'bg-[#222] text-white hover:bg-[#333]'
             }`}
           >
             {vf ? '인증완료' : cs ? '재발송' : '인증번호 발송'}
@@ -316,7 +316,7 @@ export const LoginPage: React.FC<Props> = ({ onLogin }) => {
                       <p className="text-lg font-bold text-gray-900">{foundEmail}</p>
                     </div>
                     <div className="flex gap-2">
-                      <button onClick={goLogin} className="flex-1 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold transition">
+                      <button onClick={goLogin} className="flex-1 py-2.5 rounded-lg bg-[#222] hover:bg-[#333] text-white text-sm font-semibold transition">
                         로그인하기
                       </button>
                       <button onClick={() => { setFindTab('pw'); setFoundEmail(null); setPwResetDone(false); }} className="flex-1 py-2.5 rounded-lg border border-gray-200 text-sm font-medium text-gray-500 hover:bg-gray-50 transition">
@@ -338,7 +338,7 @@ export const LoginPage: React.FC<Props> = ({ onLogin }) => {
                       onSend={sendFindIdCode} onCheck={checkFindIdCode}
                     />
                     <button type="submit" disabled={!findIdVerified}
-                      className="w-full py-3 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold transition disabled:bg-gray-200 disabled:text-gray-400">
+                      className="w-full py-3 rounded-lg bg-[#222] hover:bg-[#333] text-white text-sm font-semibold transition disabled:bg-gray-200 disabled:text-gray-400">
                       아이디 찾기
                     </button>
                     <button type="button" onClick={goLogin} className="w-full text-sm text-gray-500 hover:text-gray-700 transition">
@@ -357,7 +357,7 @@ export const LoginPage: React.FC<Props> = ({ onLogin }) => {
                     </div>
                     <p className="text-sm font-semibold text-gray-700">비밀번호가 변경되었습니다</p>
                     <p className="text-xs text-gray-500 mt-1">새 비밀번호로 로그인해주세요.</p>
-                    <button onClick={goLogin} className="mt-5 px-6 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold transition">
+                    <button onClick={goLogin} className="mt-5 px-6 py-2.5 rounded-lg bg-[#222] hover:bg-[#333] text-white text-sm font-semibold transition">
                       로그인으로 돌아가기
                     </button>
                   </div>
@@ -382,7 +382,7 @@ export const LoginPage: React.FC<Props> = ({ onLogin }) => {
                       )}
                     </div>
                     <button type="submit"
-                      className="w-full py-3 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold transition">
+                      className="w-full py-3 rounded-lg bg-[#222] hover:bg-[#333] text-white text-sm font-semibold transition">
                       비밀번호 변경
                     </button>
                     <button type="button" onClick={goLogin} className="w-full text-sm text-gray-500 hover:text-gray-700 transition">
@@ -408,7 +408,7 @@ export const LoginPage: React.FC<Props> = ({ onLogin }) => {
                       onSend={sendFindPwCode} onCheck={checkFindPwCode}
                     />
                     <button type="submit" disabled={!findPwVerified}
-                      className="w-full py-3 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold transition disabled:bg-gray-200 disabled:text-gray-400">
+                      className="w-full py-3 rounded-lg bg-[#222] hover:bg-[#333] text-white text-sm font-semibold transition disabled:bg-gray-200 disabled:text-gray-400">
                       다음
                     </button>
                     <button type="button" onClick={goLogin} className="w-full text-sm text-gray-500 hover:text-gray-700 transition">
@@ -446,7 +446,7 @@ export const LoginPage: React.FC<Props> = ({ onLogin }) => {
                   <input type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="••••••••"
                     className="w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none" />
                 </div>
-                <button type="submit" className="w-full py-3 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold transition">
+                <button type="submit" className="w-full py-3 rounded-lg bg-[#222] hover:bg-[#333] text-white text-sm font-semibold transition">
                   로그인
                 </button>
               </form>
@@ -509,7 +509,7 @@ export const LoginPage: React.FC<Props> = ({ onLogin }) => {
                 )}
               </div>
               <div className="sticky bottom-0 bg-white border-t border-gray-100 px-6 py-3">
-                <button onClick={() => setShowTermsModal(null)} className="w-full py-2.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold transition">
+                <button onClick={() => setShowTermsModal(null)} className="w-full py-2.5 rounded-lg bg-[#222] hover:bg-[#333] text-white text-sm font-semibold transition">
                   확인
                 </button>
               </div>
@@ -595,7 +595,7 @@ export const LoginPage: React.FC<Props> = ({ onLogin }) => {
                 </div>
 
                 <div className="pt-2">
-                  <button type="submit" className="w-full py-3 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold transition">
+                  <button type="submit" className="w-full py-3 rounded-lg bg-[#222] hover:bg-[#333] text-white text-sm font-semibold transition">
                     가입하기
                   </button>
                 </div>

@@ -104,7 +104,7 @@ export const ChangePasswordPage: React.FC<Props> = ({ onBack, isAdmin }) => {
             <button type="button" onClick={onBack} className="flex-1 py-3 rounded-lg border border-gray-200 text-sm font-medium text-gray-500 hover:bg-gray-50 transition">
               취소
             </button>
-            <button type="submit" className="flex-1 py-3 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold transition">
+            <button type="submit" className="flex-1 py-3 rounded-lg bg-[#222] hover:bg-[#333] text-white text-sm font-semibold transition">
               변경하기
             </button>
           </div>
