@@ -34,9 +34,6 @@ npm install
 # 개발 서버 실행
 npm start
 ```
-
-`http://localhost:3000`에서 확인할 수 있습니다.
-
 ## 빌드
 
 ```bash
