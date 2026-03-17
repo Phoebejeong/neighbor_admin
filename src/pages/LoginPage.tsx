@@ -269,22 +269,22 @@ export const LoginPage: React.FC<Props> = ({ onLogin }) => {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         {/* Logo */}
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-extrabold text-white tracking-tight">EYEVACS</h1>
-          <p className="text-blue-200 text-sm mt-1">우리동네 사장님 센터</p>
+          <h1 className="text-2xl font-bold tracking-tight text-gray-900">EYEVACS</h1>
+          <p className="text-gray-500 text-sm mt-1">우리동네 사장님 센터</p>
         </div>
 
         {/* Card */}
-        <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
+        <div className="bg-white rounded-lg shadow-sm overflow-hidden">
 
           {/* ════════ 아이디/비밀번호 찾기 ════════ */}
           {mode === 'find' ? (
             <>
               <div className="px-6 pt-6 pb-2">
-                <h3 className="text-lg font-extrabold text-gray-900">계정 찾기</h3>
+                <h3 className="text-lg font-bold text-gray-900">계정 찾기</h3>
                 <p className="text-sm text-gray-500 mt-1">휴대폰 인증으로 아이디 또는 비밀번호를 찾습니다</p>
               </div>
 
@@ -422,7 +422,7 @@ export const LoginPage: React.FC<Props> = ({ onLogin }) => {
             /* ════════ 로그인 ════════ */
             <>
               <div className="px-6 pt-6 pb-2">
-                <h3 className="text-lg font-extrabold text-gray-900">로그인</h3>
+                <h3 className="text-lg font-bold text-gray-900">로그인</h3>
                 <p className="text-sm text-gray-500 mt-1">이메일과 비밀번호를 입력하세요</p>
               </div>
 
@@ -475,7 +475,7 @@ export const LoginPage: React.FC<Props> = ({ onLogin }) => {
         {showTermsModal && (
           <div className="fixed inset-0 z-[60] flex items-center justify-center p-4">
             <div className="absolute inset-0 bg-black/50" onClick={() => setShowTermsModal(null)} />
-            <div className="relative bg-white rounded-xl shadow-2xl w-full max-w-lg max-h-[80vh] overflow-y-auto">
+            <div className="relative bg-white rounded-lg shadow-sm w-full max-w-lg max-h-[80vh] overflow-y-auto">
               <div className="sticky top-0 bg-white border-b border-gray-100 px-6 py-4 flex items-center justify-between">
                 <h3 className="text-base font-bold text-gray-900">
                   {showTermsModal === 'terms' ? '이용약관' : '개인정보 수집·이용 동의'}
@@ -521,10 +521,10 @@ export const LoginPage: React.FC<Props> = ({ onLogin }) => {
         {mode === 'signup' && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
             <div className="absolute inset-0 bg-black/50" onClick={() => setMode('login')} />
-            <div className="relative bg-white rounded-xl shadow-2xl w-full max-w-md max-h-[90vh] overflow-y-auto">
+            <div className="relative bg-white rounded-lg shadow-sm w-full max-w-md max-h-[90vh] overflow-y-auto">
               <div className="px-6 pt-6 pb-2 flex items-start justify-between">
                 <div>
-                  <h3 className="text-lg font-extrabold text-gray-900">회원가입</h3>
+                  <h3 className="text-lg font-bold text-gray-900">회원가입</h3>
                   <p className="text-sm text-gray-500 mt-1">가게 정보를 등록하려면 먼저 가입하세요</p>
                 </div>
                 <button onClick={() => setMode('login')} className="text-gray-400 hover:text-gray-600 transition p-1">
@@ -604,7 +604,7 @@ export const LoginPage: React.FC<Props> = ({ onLogin }) => {
           </div>
         )}
 
-        <p className="text-center text-xs text-blue-200 mt-6">
+        <p className="text-center text-xs text-gray-400 mt-6">
           아파트 단지 인근 상가를 무료로 등록하고<br />입주민에게 홍보하세요
         </p>
       </div>

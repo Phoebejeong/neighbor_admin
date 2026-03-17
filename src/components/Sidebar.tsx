@@ -1,36 +1,36 @@
 import React, { useState, useRef, useEffect } from 'react';
 import {
-  MegaphoneIcon,
-  ShoppingBagIcon,
-  ChartBarIcon,
-  CurrencyDollarIcon,
-  QuestionMarkCircleIcon,
-  ArrowRightOnRectangleIcon,
-  BuildingStorefrontIcon,
-  Cog6ToothIcon,
-  KeyIcon,
-  UserCircleIcon,
-  UserGroupIcon,
-  DocumentChartBarIcon,
-  MapIcon,
-  TagIcon,
-} from '@heroicons/react/24/outline';
+  Megaphone,
+  ShoppingBag,
+  BarChart3,
+  DollarSign,
+  CircleHelp,
+  LogOut,
+  Store,
+  Settings,
+  KeyRound,
+  CircleUser,
+  Users,
+  FileBarChart,
+  Map,
+  Tag,
+} from 'lucide-react';
 
 const SHOP_NAV = [
-  { key: 'stats', label: '광고 성과', icon: ChartBarIcon },
-  { key: 'myads', label: '알짜광고', icon: MegaphoneIcon },
-  { key: 'myshopping', label: '실속쇼핑', icon: ShoppingBagIcon },
-  { key: 'pricing', label: '요금 안내', icon: CurrencyDollarIcon },
-  { key: 'faq', label: '고객센터', icon: QuestionMarkCircleIcon },
+  { key: 'stats', label: '광고 성과', icon: BarChart3 },
+  { key: 'myads', label: '알짜광고', icon: Megaphone },
+  { key: 'myshopping', label: '실속쇼핑', icon: ShoppingBag },
+  { key: 'pricing', label: '요금 안내', icon: DollarSign },
+  { key: 'faq', label: '고객센터', icon: CircleHelp },
 ] as const;
 
 const ADMIN_NAV = [
-  { key: 'admin-stats', label: '통계', icon: ChartBarIcon },
-  { key: 'admin-shops', label: '이웃상가', icon: BuildingStorefrontIcon },
-  { key: 'admin-ads', label: '알짜광고', icon: MegaphoneIcon },
-  { key: 'admin-shopping', label: '실속쇼핑', icon: ShoppingBagIcon },
-  { key: 'admin-sales', label: '영업 대시보드', icon: UserGroupIcon },
-  { key: 'admin-report', label: '성과 리포트', icon: DocumentChartBarIcon },
+  { key: 'admin-stats', label: '통계', icon: BarChart3 },
+  { key: 'admin-shops', label: '이웃상가', icon: Store },
+  { key: 'admin-ads', label: '알짜광고', icon: Megaphone },
+  { key: 'admin-shopping', label: '실속쇼핑', icon: ShoppingBag },
+  { key: 'admin-sales', label: '영업 대시보드', icon: Users },
+  { key: 'admin-report', label: '성과 리포트', icon: FileBarChart },
 ] as const;
 
 interface Props {
@@ -59,15 +59,13 @@ export const TopNav: React.FC<Props> = ({ current, shopName, userEmail, onNaviga
 
   return (
     <header className={`${isAdmin ? 'bg-gray-900' : 'bg-white'} border-b ${isAdmin ? 'border-gray-700' : 'border-gray-200'} sticky top-0 z-40`}>
-      <div className="mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <div className="flex items-center gap-2 cursor-pointer shrink-0" onClick={() => onNavigate(defaultPage)}>
-            <div className={`w-10 h-10 rounded-xl ${isAdmin ? 'bg-amber-500' : 'bg-blue-600'} flex items-center justify-center`}>
-              <span className="text-white text-sm font-extrabold">E</span>
-            </div>
+            <img src="/logo.png" alt="EYEVACS" className="w-10 h-10 rounded-lg object-cover" />
             <div>
-              <h1 className={`text-lg font-extrabold leading-none ${isAdmin ? 'text-white' : 'text-gray-900'}`}>EYEVACS</h1>
+              <h1 className={`text-lg font-bold leading-none ${isAdmin ? 'text-white' : 'text-gray-900'}`}>EYEVACS</h1>
               <div className="flex items-center gap-1.5 mt-0.5">
                 {isAdmin && <span className="text-[9px] font-bold text-amber-400 bg-amber-400/20 px-1.5 py-0.5 rounded">ADMIN</span>}
                 <p className="text-xs text-gray-400 leading-none">
@@ -83,13 +81,12 @@ export const TopNav: React.FC<Props> = ({ current, shopName, userEmail, onNaviga
               <button
                 key={key}
                 onClick={() => onNavigate(key)}
-                className={`flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-bold transition ${
+                className={`flex items-center gap-2 px-3 py-2.5 text-sm border-b-2 transition ${
                   current === key
-                    ? isAdmin ? 'text-amber-400' : 'text-blue-600'
-                    : isAdmin ? 'text-gray-300 hover:text-amber-400' : 'text-gray-700 hover:text-blue-600'
+                    ? isAdmin ? 'border-amber-400 text-amber-400 font-bold' : 'border-blue-600 text-blue-600 font-bold'
+                    : isAdmin ? 'border-transparent text-gray-400 hover:text-amber-400 font-medium' : 'border-transparent text-gray-500 hover:text-gray-900 font-medium'
                 }`}
               >
-                <Icon className="w-5 h-5" />
                 {label}
               </button>
             ))}
@@ -120,7 +117,7 @@ export const TopNav: React.FC<Props> = ({ current, shopName, userEmail, onNaviga
 
             {/* Dropdown Menu */}
             {menuOpen && (
-              <div className={`absolute right-0 top-full mt-2 w-56 rounded-xl shadow-lg border overflow-hidden z-50 animate-fade-in ${
+              <div className={`absolute right-0 top-full mt-2 w-56 rounded-lg shadow-sm border overflow-hidden z-50 animate-fade-in ${
                 isAdmin ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'
               }`}>
                 {/* Header */}
@@ -138,13 +135,13 @@ export const TopNav: React.FC<Props> = ({ current, shopName, userEmail, onNaviga
                   {!isAdmin && (
                     <>
                       <DropdownItem
-                        icon={<UserCircleIcon className="w-4 h-4" />}
+                        icon={<CircleUser className="w-4 h-4" />}
                         label="내 계정"
                         dark={false}
                         onClick={() => { onNavigate('my-account'); setMenuOpen(false); }}
                       />
                       <DropdownItem
-                        icon={<BuildingStorefrontIcon className="w-4 h-4" />}
+                        icon={<Store className="w-4 h-4" />}
                         label="내 가게 관리"
                         dark={false}
                         onClick={() => { onNavigate('myshop'); setMenuOpen(false); }}
@@ -154,7 +151,7 @@ export const TopNav: React.FC<Props> = ({ current, shopName, userEmail, onNaviga
                   {isAdmin && (
                     <>
                       <DropdownItem
-                        icon={<UserCircleIcon className="w-4 h-4" />}
+                        icon={<CircleUser className="w-4 h-4" />}
                         label="계정 정보"
                         dark
                         onClick={() => { onNavigate('my-account'); setMenuOpen(false); }}
@@ -165,7 +162,7 @@ export const TopNav: React.FC<Props> = ({ current, shopName, userEmail, onNaviga
 
                 <div className={`border-t ${isAdmin ? 'border-gray-700' : 'border-gray-100'}`}>
                   <DropdownItem
-                    icon={<ArrowRightOnRectangleIcon className="w-4 h-4" />}
+                    icon={<LogOut className="w-4 h-4" />}
                     label="로그아웃"
                     dark={!!isAdmin}
                     danger
@@ -183,13 +180,12 @@ export const TopNav: React.FC<Props> = ({ current, shopName, userEmail, onNaviga
             <button
               key={key}
               onClick={() => onNavigate(key)}
-              className={`flex items-center gap-1.5 px-3.5 py-2.5 rounded-lg text-sm font-bold whitespace-nowrap transition ${
+              className={`flex items-center gap-1.5 px-3 py-2.5 text-sm whitespace-nowrap border-b-2 transition ${
                 current === key
-                  ? isAdmin ? 'text-amber-400' : 'text-blue-600'
-                  : isAdmin ? 'text-gray-300 hover:text-amber-400' : 'text-gray-700 hover:text-blue-600'
+                  ? isAdmin ? 'border-amber-400 text-amber-400 font-bold' : 'border-blue-600 text-blue-600 font-bold'
+                  : isAdmin ? 'border-transparent text-gray-400 hover:text-amber-400 font-medium' : 'border-transparent text-gray-500 hover:text-gray-900 font-medium'
               }`}
             >
-              <Icon className="w-4 h-4" />
               {label}
             </button>
           ))}

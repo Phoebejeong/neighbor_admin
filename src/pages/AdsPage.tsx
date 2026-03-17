@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { PlusIcon, PencilSquareIcon, TrashIcon } from '@heroicons/react/24/outline';
+import { Plus, SquarePen, Trash2 } from 'lucide-react';
 import { LocalAd } from '../data/types';
 import { getAdStatus, formatMoney, genId } from '../data/utils';
 import { Modal } from '../components/Modal';
@@ -42,17 +42,17 @@ export const AdsPage: React.FC<Props> = ({ ads, setAds, readOnly }) => {
     <div>
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h2 className="text-xl font-extrabold pl-1">알짜광고 관리</h2>
+          <h2 className="text-xl font-bold pl-1">알짜광고 관리</h2>
           <p className="text-sm text-gray-500 mt-1">유료 광고 · 기간별 이벤트/프로모션 관리</p>
         </div>
         {!readOnly && (
           <button onClick={openNew} className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2.5 rounded-lg text-sm font-semibold flex items-center gap-2 transition">
-            <PlusIcon className="w-4 h-4" /> 광고 등록
+            <Plus className="w-4 h-4" /> 광고 등록
           </button>
         )}
       </div>
 
-      <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
+      <div className="bg-white rounded-lg shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
@@ -69,20 +69,20 @@ export const AdsPage: React.FC<Props> = ({ ads, setAds, readOnly }) => {
                   <tr key={ad.id} className="border-b border-gray-100 hover:bg-blue-50/30 transition">
                     <td className="px-4 py-3.5 font-semibold max-w-[200px] truncate">{ad.title}</td>
                     <td className="px-4 py-3.5 text-gray-500">{ad.advertiser}</td>
-                    <td className="px-4 py-3.5"><span className={`text-xs px-2.5 py-1 rounded-full font-semibold ${st.cls}`}>{st.label}</span></td>
+                    <td className="px-4 py-3.5"><span className={`text-xs font-semibold ${st.cls}`}>{st.label}</span></td>
                     <td className="px-4 py-3.5 text-gray-500 text-xs">{ad.period}</td>
                     <td className="px-4 py-3.5 font-semibold text-center">{formatMoney(ad.viewCount)}</td>
                     <td className="px-4 py-3.5 font-semibold text-right">{formatMoney(ad.amount)}원</td>
                     <td className="px-4 py-3.5">
-                      <span className={`text-xs px-2 py-1 rounded-full font-medium ${ad.paymentStatus === 'paid' ? 'bg-emerald-100 text-emerald-600' : 'bg-red-100 text-red-500'}`}>
+                      <span className={`text-xs font-medium ${ad.paymentStatus === 'paid' ? 'text-emerald-600' : 'text-red-500'}`}>
                         {ad.paymentStatus === 'paid' ? '결제완료' : '미결제'}
                       </span>
                     </td>
                     {!readOnly && (
                       <td className="px-4 py-3.5">
                         <div className="flex items-center gap-1">
-                          <button onClick={() => openEdit(ad)} className="p-1.5 rounded-lg hover:bg-blue-100 text-gray-400 hover:text-blue-600 transition"><PencilSquareIcon className="w-4 h-4" /></button>
-                          <button onClick={() => remove(ad.id)} className="p-1.5 rounded-lg hover:bg-red-100 text-gray-400 hover:text-red-500 transition"><TrashIcon className="w-4 h-4" /></button>
+                          <button onClick={() => openEdit(ad)} className="p-1.5 rounded-lg hover:bg-blue-100 text-gray-400 hover:text-blue-600 transition"><SquarePen className="w-4 h-4" /></button>
+                          <button onClick={() => remove(ad.id)} className="p-1.5 rounded-lg hover:bg-red-100 text-gray-400 hover:text-red-500 transition"><Trash2 className="w-4 h-4" /></button>
                         </div>
                       </td>
                     )}

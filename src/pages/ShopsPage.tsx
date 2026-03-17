@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { PlusIcon, PencilSquareIcon, TrashIcon } from '@heroicons/react/24/outline';
+import { Plus, SquarePen, Trash2 } from 'lucide-react';
 import { LocalShop, CATEGORIES, ICONS } from '../data/types';
 import { genId } from '../data/utils';
 import { Modal } from '../components/Modal';
@@ -45,17 +45,17 @@ export const ShopsPage: React.FC<Props> = ({ shops, setShops, readOnly }) => {
     <div>
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h2 className="text-xl font-extrabold pl-1">이웃상가 관리</h2>
+          <h2 className="text-xl font-bold pl-1">이웃상가 관리</h2>
           <p className="text-sm text-gray-500 mt-1">무료 등록 · 관리사무소에서 자유롭게 등록/수정</p>
         </div>
         {!readOnly && (
           <button onClick={openNew} className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2.5 rounded-lg text-sm font-semibold flex items-center gap-2 transition">
-            <PlusIcon className="w-4 h-4" /> 상가 등록
+            <Plus className="w-4 h-4" /> 상가 등록
           </button>
         )}
       </div>
 
-      <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
+      <div className="bg-white rounded-lg shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
@@ -82,8 +82,8 @@ export const ShopsPage: React.FC<Props> = ({ shops, setShops, readOnly }) => {
                   {!readOnly && (
                     <td className="px-4 py-3.5">
                       <div className="flex items-center gap-1">
-                        <button onClick={() => openEdit(shop)} className="p-1.5 rounded-lg hover:bg-blue-100 text-gray-400 hover:text-blue-600 transition"><PencilSquareIcon className="w-4 h-4" /></button>
-                        <button onClick={() => remove(shop.id)} className="p-1.5 rounded-lg hover:bg-red-100 text-gray-400 hover:text-red-500 transition"><TrashIcon className="w-4 h-4" /></button>
+                        <button onClick={() => openEdit(shop)} className="p-1.5 rounded-lg hover:bg-blue-100 text-gray-400 hover:text-blue-600 transition"><SquarePen className="w-4 h-4" /></button>
+                        <button onClick={() => remove(shop.id)} className="p-1.5 rounded-lg hover:bg-red-100 text-gray-400 hover:text-red-500 transition"><Trash2 className="w-4 h-4" /></button>
                       </div>
                     </td>
                   )}

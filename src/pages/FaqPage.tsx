@@ -1,37 +1,37 @@
 import React, { useState } from 'react';
-import { ChevronDownIcon, PhoneIcon, EnvelopeIcon, ClockIcon } from '@heroicons/react/24/outline';
+import { ChevronDown, Phone, Mail, Clock } from 'lucide-react';
 
 export const FaqPage: React.FC = () => {
   return (
     <div>
       <div className="mb-6">
-        <h2 className="text-xl font-extrabold pl-1">고객센터</h2>
+        <h2 className="text-xl font-bold">고객센터</h2>
         <p className="text-sm text-gray-500 mt-1">궁금한 점이 있으시면 아래를 확인해주세요</p>
       </div>
 
       {/* Contact Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
-        <div className="bg-white rounded-xl border border-gray-200 p-5 flex items-center gap-4">
-          <div className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center shrink-0">
-            <PhoneIcon className="w-6 h-6 text-blue-500" />
+        <div className="bg-white rounded-lg p-5 flex items-center gap-4 shadow-sm">
+          <div className="shrink-0">
+            <Phone className="w-6 h-6 text-blue-500" />
           </div>
           <div>
             <p className="text-xs text-gray-400 font-medium">전화 문의</p>
             <p className="text-sm font-bold text-gray-900 mt-0.5">031-000-0000</p>
           </div>
         </div>
-        <div className="bg-white rounded-xl border border-gray-200 p-5 flex items-center gap-4">
-          <div className="w-12 h-12 rounded-xl bg-emerald-50 flex items-center justify-center shrink-0">
-            <EnvelopeIcon className="w-6 h-6 text-emerald-500" />
+        <div className="bg-white rounded-lg p-5 flex items-center gap-4 shadow-sm">
+          <div className="shrink-0">
+            <Mail className="w-6 h-6 text-emerald-500" />
           </div>
           <div>
             <p className="text-xs text-gray-400 font-medium">이메일 문의</p>
             <p className="text-sm font-bold text-gray-900 mt-0.5">admin@eyevacs.com</p>
           </div>
         </div>
-        <div className="bg-white rounded-xl border border-gray-200 p-5 flex items-center gap-4">
-          <div className="w-12 h-12 rounded-xl bg-amber-50 flex items-center justify-center shrink-0">
-            <ClockIcon className="w-6 h-6 text-amber-500" />
+        <div className="bg-white rounded-lg p-5 flex items-center gap-4 shadow-sm">
+          <div className="shrink-0">
+            <Clock className="w-6 h-6 text-amber-500" />
           </div>
           <div>
             <p className="text-xs text-gray-400 font-medium">운영 시간</p>
@@ -41,7 +41,7 @@ export const FaqPage: React.FC = () => {
       </div>
 
       {/* FAQ */}
-      <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
+      <div className="bg-white rounded-lg overflow-hidden shadow-sm">
         <div className="px-5 py-4 border-b border-gray-100">
           <h3 className="text-base font-bold text-gray-800">자주 묻는 질문</h3>
         </div>
@@ -66,11 +66,11 @@ const FaqItem: React.FC<{ q: string; a: string }> = ({ q, a }) => {
     <div>
       <button onClick={() => setOpen(!open)} className="w-full flex items-center justify-between px-5 py-4 text-left hover:bg-gray-50 transition">
         <span className="text-sm font-bold text-gray-800 pr-4">Q. {q}</span>
-        <ChevronDownIcon className={`w-5 h-5 text-gray-400 shrink-0 transition-transform ${open ? 'rotate-180' : ''}`} />
+        <ChevronDown className={`w-5 h-5 text-gray-400 shrink-0 transition-transform ${open ? 'rotate-180' : ''}`} />
       </button>
       {open && (
         <div className="px-5 pb-4 -mt-1">
-          <p className="text-sm text-gray-500 leading-relaxed pl-4 border-l-2 border-blue-300">A. {a}</p>
+          <p className="text-sm text-gray-500 leading-relaxed pl-4 border-l-2 border-gray-200">A. {a}</p>
         </div>
       )}
     </div>

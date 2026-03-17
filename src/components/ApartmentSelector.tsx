@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { MapPinIcon, BuildingOffice2Icon, MagnifyingGlassIcon } from '@heroicons/react/24/outline';
+import { MapPin, Building2, Search } from 'lucide-react';
 import { Apartment } from '../data/types';
 import { apartments } from '../data/mockData';
 import { getNearbyApartments } from '../data/utils';
@@ -54,7 +54,7 @@ export const ApartmentSelector: React.FC<Props> = ({ shopLat, shopLng, selected,
 
       {/* 반경 선택 */}
       <div className="flex items-center gap-2">
-        <MapPinIcon className="w-4 h-4 text-gray-400" />
+        <MapPin className="w-4 h-4 text-gray-400" />
         <span className="text-xs text-gray-500">반경</span>
         {[1, 3, 5, 10].map(r => (
           <button
@@ -72,7 +72,7 @@ export const ApartmentSelector: React.FC<Props> = ({ shopLat, shopLng, selected,
 
       {/* 검색 */}
       <div className="relative">
-        <MagnifyingGlassIcon className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
+        <Search className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
         <input
           value={search}
           onChange={e => setSearch(e.target.value)}
@@ -89,7 +89,7 @@ export const ApartmentSelector: React.FC<Props> = ({ shopLat, shopLng, selected,
       </div>
 
       {/* 아파트 리스트 */}
-      <div className="max-h-60 overflow-y-auto space-y-1.5 border border-gray-100 rounded-xl p-2">
+      <div className="max-h-60 overflow-y-auto space-y-1.5 border border-gray-100 rounded-lg p-2">
         {filtered.length === 0 ? (
           <p className="text-sm text-gray-400 text-center py-6">
             {nearby.length === 0 ? '반경 내 아파트가 없습니다. 반경을 늘려보세요.' : '검색 결과가 없습니다'}
@@ -110,7 +110,7 @@ export const ApartmentSelector: React.FC<Props> = ({ shopLat, shopLng, selected,
                   onChange={() => toggle(apt.id)}
                   className="w-4 h-4 rounded text-blue-600 shrink-0"
                 />
-                <BuildingOffice2Icon className={`w-5 h-5 shrink-0 ${isSelected ? 'text-blue-500' : 'text-gray-300'}`} />
+                <Building2 className={`w-5 h-5 shrink-0 ${isSelected ? 'text-blue-500' : 'text-gray-300'}`} />
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2">
                     <span className="text-sm font-semibold text-gray-800 truncate">{apt.name}</span>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useToast } from '../components/Toast';
-import { ShieldCheckIcon, ExclamationTriangleIcon } from '@heroicons/react/24/outline';
+import { ShieldCheck, TriangleAlert } from 'lucide-react';
 
 interface Props {
   name: string;
@@ -92,12 +92,13 @@ export const MyAccountPage: React.FC<Props> = ({ name, email, phone, onSave, onB
   return (
     <div className="max-w-lg mx-auto">
       <div className="mb-6">
-        <h2 className="text-xl font-extrabold pl-1">내 계정</h2>
+        <h2 className="text-xl font-bold pl-1 text-gray-900">내 계정</h2>
         <p className="text-sm text-gray-500 mt-1">계정 정보를 확인하고 수정할 수 있습니다</p>
       </div>
 
       {/* 기본 정보 섹션 */}
-      <div className="bg-white rounded-xl border border-gray-200 p-6 space-y-5 mb-4">
+      <div className="bg-white rounded-lg shadow-sm mb-4">
+      <div className="p-6 space-y-5">
         <h3 className="text-base font-bold text-gray-900">기본 정보</h3>
 
         <div>
@@ -180,7 +181,7 @@ export const MyAccountPage: React.FC<Props> = ({ name, email, phone, onSave, onB
                 )}
                 {verified && (
                   <div className="flex items-center gap-1 px-3 text-emerald-600">
-                    <ShieldCheckIcon className="w-5 h-5" />
+                    <ShieldCheck className="w-5 h-5" />
                     <span className="text-xs font-semibold">인증됨</span>
                   </div>
                 )}
@@ -244,6 +245,7 @@ export const MyAccountPage: React.FC<Props> = ({ name, email, phone, onSave, onB
           </button>
         </div>
       </div>
+      </div>
 
       {/* 회원 탈퇴 */}
       <div className="flex justify-end mt-6 px-1">
@@ -256,13 +258,13 @@ export const MyAccountPage: React.FC<Props> = ({ name, email, phone, onSave, onB
       {showWithdrawConfirm && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
           <div className="absolute inset-0 bg-black/50" onClick={() => setShowWithdrawConfirm(false)} />
-          <div className="relative bg-white rounded-xl shadow-2xl w-full max-w-md overflow-hidden">
+          <div className="relative bg-white rounded-lg shadow-lg w-full max-w-md overflow-hidden">
             <div className="p-6">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center shrink-0">
-                  <ExclamationTriangleIcon className="w-5 h-5 text-red-500" />
+                  <TriangleAlert className="w-5 h-5 text-red-500" />
                 </div>
-                <h3 className="text-lg font-extrabold text-gray-900">정말 탈퇴하시겠습니까?</h3>
+                <h3 className="text-lg font-bold text-gray-900">정말 탈퇴하시겠습니까?</h3>
               </div>
 
               <div className="bg-red-50 rounded-lg p-4 mb-4 space-y-2">

@@ -3,13 +3,13 @@ import { LocalShop, LocalAd, ShoppingItem } from '../data/types';
 import { apartments } from '../data/mockData';
 import { getAdStatus, formatMoney } from '../data/utils';
 import {
-  DocumentTextIcon,
-  EyeIcon,
-  CurrencyDollarIcon,
-  ArrowTrendingUpIcon,
-  PhoneArrowDownLeftIcon,
-  BuildingStorefrontIcon,
-} from '@heroicons/react/24/outline';
+  FileText,
+  Eye,
+  DollarSign,
+  TrendingUp,
+  PhoneIncoming,
+  Store,
+} from 'lucide-react';
 
 interface Props {
   shops: LocalShop[];
@@ -60,15 +60,15 @@ export const AdminReportPage: React.FC<Props> = ({ shops, ads, shopping }) => {
     <div>
       <div className="flex items-start justify-between mb-6">
         <div>
-          <h2 className="text-xl font-extrabold pl-1">성과 리포트</h2>
+          <h2 className="text-xl font-bold pl-1">성과 리포트</h2>
           <p className="text-sm text-gray-500 mt-1">사장님에게 공유할 월간 성과 요약</p>
         </div>
       </div>
 
       {/* Shop Selector */}
-      <div className="bg-white rounded-xl border border-gray-200 p-4 mb-6">
+      <div className="bg-white rounded-lg shadow-sm p-4 mb-6">
         <div className="flex items-center gap-3">
-          <BuildingStorefrontIcon className="w-5 h-5 text-gray-400" />
+          <Store className="w-5 h-5 text-gray-400" />
           <span className="text-sm font-bold text-gray-700">상가 선택</span>
           <select
             value={selectedShop}
@@ -85,14 +85,14 @@ export const AdminReportPage: React.FC<Props> = ({ shops, ads, shopping }) => {
 
       {/* KPI Cards */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-        <KpiCard icon={<EyeIcon className="w-6 h-6 text-cyan-500" />} label="총 조회수" value={`${formatMoney(totalViews)}회`} sub={`평균 ${formatMoney(avgViews)}회/건`} bg="bg-cyan-50" />
-        <KpiCard icon={<ArrowTrendingUpIcon className="w-6 h-6 text-emerald-500" />} label="도달 가능 세대" value={`${formatMoney(totalHouseholds)}세대`} sub={`활성 ${formatMoney(totalActiveUsers)}명`} bg="bg-emerald-50" />
-        <KpiCard icon={<CurrencyDollarIcon className="w-6 h-6 text-amber-500" />} label="총 광고비" value={`${formatMoney(totalAdSpend + totalShoppingSpend)}원`} sub={`CPV ${formatMoney(cpv)}원`} bg="bg-amber-50" />
-        <KpiCard icon={<DocumentTextIcon className="w-6 h-6 text-purple-500" />} label="진행중 광고" value={`${activeAds}건`} sub={`총 ${filteredAds.length}건 등록`} bg="bg-purple-50" />
+        <KpiCard icon={<Eye className="w-6 h-6 text-cyan-500" />} label="총 조회수" value={`${formatMoney(totalViews)}회`} sub={`평균 ${formatMoney(avgViews)}회/건`} />
+        <KpiCard icon={<TrendingUp className="w-6 h-6 text-emerald-500" />} label="도달 가능 세대" value={`${formatMoney(totalHouseholds)}세대`} sub={`활성 ${formatMoney(totalActiveUsers)}명`} />
+        <KpiCard icon={<DollarSign className="w-6 h-6 text-amber-500" />} label="총 광고비" value={`${formatMoney(totalAdSpend + totalShoppingSpend)}원`} sub={`CPV ${formatMoney(cpv)}원`} />
+        <KpiCard icon={<FileText className="w-6 h-6 text-purple-500" />} label="진행중 광고" value={`${activeAds}건`} sub={`총 ${filteredAds.length}건 등록`} />
       </div>
 
       {/* Report Card - Ad Performance */}
-      <div className="bg-white rounded-xl border border-gray-200 p-5 mb-6">
+      <div className="bg-white rounded-lg shadow-sm p-5 mb-6">
         <h3 className="text-base font-bold text-gray-800 mb-4">광고별 성과 상세</h3>
         {filteredAds.length === 0 ? (
           <p className="text-sm text-gray-400 text-center py-6">등록된 광고가 없습니다</p>
@@ -123,7 +123,7 @@ export const AdminReportPage: React.FC<Props> = ({ shops, ads, shopping }) => {
                         <p className="text-xs text-gray-400">{ad.period}</p>
                       </td>
                       <td className="py-3 px-2 text-center">
-                        <span className={`text-xs px-2 py-0.5 rounded-full font-bold ${st.cls}`}>{st.label}</span>
+                        <span className={`text-xs font-bold ${st.cls}`}>{st.label}</span>
                       </td>
                       <td className="py-3 px-2 text-right font-bold">{formatMoney(ad.viewCount)}회</td>
                       <td className="py-3 px-2 text-right font-bold">{formatMoney(ad.amount)}원</td>
@@ -140,7 +140,7 @@ export const AdminReportPage: React.FC<Props> = ({ shops, ads, shopping }) => {
       </div>
 
       {/* Target Apartment Coverage */}
-      <div className="bg-white rounded-xl border border-gray-200 p-5 mb-6">
+      <div className="bg-white rounded-lg shadow-sm p-5 mb-6">
         <h3 className="text-base font-bold text-gray-800 mb-4">대상 아파트 커버리지</h3>
         {targetApts.length === 0 ? (
           <p className="text-sm text-gray-400 text-center py-6">대상 아파트가 없습니다</p>
@@ -179,7 +179,7 @@ export const AdminReportPage: React.FC<Props> = ({ shops, ads, shopping }) => {
       </div>
 
       {/* Shopping Performance */}
-      <div className="bg-white rounded-xl border border-gray-200 p-5">
+      <div className="bg-white rounded-lg shadow-sm p-5">
         <h3 className="text-base font-bold text-gray-800 mb-4">실속쇼핑 성과</h3>
         {filteredShopping.length === 0 ? (
           <p className="text-sm text-gray-400 text-center py-6">등록된 상품이 없습니다</p>
@@ -226,13 +226,13 @@ export const AdminReportPage: React.FC<Props> = ({ shops, ads, shopping }) => {
   );
 };
 
-const KpiCard: React.FC<{ icon: React.ReactNode; label: string; value: string; sub: string; bg: string }> = ({ icon, label, value, sub, bg }) => (
-  <div className="bg-white rounded-xl border border-gray-200 p-5">
+const KpiCard: React.FC<{ icon: React.ReactNode; label: string; value: string; sub: string }> = ({ icon, label, value, sub }) => (
+  <div className="bg-white rounded-lg shadow-sm p-5">
     <div className="flex items-center gap-3 mb-3">
-      <div className={`w-10 h-10 rounded-lg ${bg} flex items-center justify-center`}>{icon}</div>
+      {icon}
       <span className="text-xs text-gray-400 font-medium">{label}</span>
     </div>
-    <p className="text-xl font-extrabold text-gray-900">{value}</p>
+    <p className="text-xl font-bold text-gray-900">{value}</p>
     <p className="text-xs text-gray-400 mt-1">{sub}</p>
   </div>
 );
