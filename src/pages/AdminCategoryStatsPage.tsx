@@ -2,12 +2,12 @@ import React, { useMemo } from 'react';
 import { LocalShop, LocalAd, ShoppingItem, CATEGORIES } from '../data/types';
 import { formatMoney, getAdStatus } from '../data/utils';
 import {
-  TagIcon,
-  EyeIcon,
-  CurrencyDollarIcon,
-  ArrowTrendingUpIcon,
-  BuildingStorefrontIcon,
-} from '@heroicons/react/24/outline';
+  Tag,
+  Eye,
+  DollarSign,
+  TrendingUp,
+  Store,
+} from 'lucide-react';
 
 interface Props {
   shops: LocalShop[];
@@ -95,7 +95,7 @@ export const AdminCategoryStatsPage: React.FC<Props> = ({ shops, ads, shopping }
   return (
     <div>
       <div className="mb-6">
-        <h2 className="text-xl font-extrabold pl-1">업종별 통계</h2>
+        <h2 className="text-xl font-bold pl-1">업종별 통계</h2>
         <p className="text-sm text-gray-500 mt-1">업종별 광고 효과 · 상가 분포 분석</p>
       </div>
 
@@ -103,35 +103,35 @@ export const AdminCategoryStatsPage: React.FC<Props> = ({ shops, ads, shopping }
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
         {topByViews && (
           <HighlightCard
-            icon={<EyeIcon className="w-5 h-5 text-cyan-500" />}
+            icon={<Eye className="w-5 h-5 text-cyan-500" />}
             label="조회수 1위 업종"
             value={topByViews.category}
             sub={`${formatMoney(topByViews.totalViews)}회 · 평균 ${formatMoney(topByViews.avgViews)}회`}
-            bg="bg-cyan-50"
+           
           />
         )}
         {topByRevenue && (
           <HighlightCard
-            icon={<CurrencyDollarIcon className="w-5 h-5 text-amber-500" />}
+            icon={<DollarSign className="w-5 h-5 text-amber-500" />}
             label="매출 1위 업종"
             value={topByRevenue.category}
             sub={`${formatMoney(topByRevenue.totalRevenue)}원`}
-            bg="bg-amber-50"
+           
           />
         )}
         {topByShops && (
           <HighlightCard
-            icon={<BuildingStorefrontIcon className="w-5 h-5 text-emerald-500" />}
+            icon={<Store className="w-5 h-5 text-emerald-500" />}
             label="상가수 1위 업종"
             value={topByShops.category}
             sub={`${topByShops.shopCount}개 상가`}
-            bg="bg-emerald-50"
+           
           />
         )}
       </div>
 
       {/* Category Comparison Chart */}
-      <div className="bg-white rounded-xl border border-gray-200 p-5 mb-6">
+      <div className="bg-white rounded-lg shadow-sm p-5 mb-6">
         <h3 className="text-base font-bold text-gray-800 mb-4">업종별 조회수 비교</h3>
         <div className="space-y-3">
           {categoryData.map((cat, i) => {
@@ -145,7 +145,7 @@ export const AdminCategoryStatsPage: React.FC<Props> = ({ shops, ads, shopping }
                 <div className="flex-1">
                   <div className="w-full h-7 bg-gray-100 rounded-full overflow-hidden">
                     <div
-                      className="h-full bg-gradient-to-r from-cyan-400 to-cyan-600 rounded-full flex items-center justify-end pr-2 transition-all"
+                      className="h-full bg-cyan-500 rounded-full flex items-center justify-end pr-2 transition-all"
                       style={{ width: `${Math.max(pct, 5)}%` }}
                     >
                       {pct > 15 && <span className="text-xs font-bold text-white">{formatMoney(cat.totalViews)}</span>}
@@ -160,7 +160,7 @@ export const AdminCategoryStatsPage: React.FC<Props> = ({ shops, ads, shopping }
       </div>
 
       {/* Revenue Comparison */}
-      <div className="bg-white rounded-xl border border-gray-200 p-5 mb-6">
+      <div className="bg-white rounded-lg shadow-sm p-5 mb-6">
         <h3 className="text-base font-bold text-gray-800 mb-4">업종별 매출 비교</h3>
         <div className="space-y-3">
           {[...categoryData].sort((a, b) => b.totalRevenue - a.totalRevenue).map((cat, i) => {
@@ -174,7 +174,7 @@ export const AdminCategoryStatsPage: React.FC<Props> = ({ shops, ads, shopping }
                 <div className="flex-1">
                   <div className="w-full h-7 bg-gray-100 rounded-full overflow-hidden">
                     <div
-                      className="h-full bg-gradient-to-r from-amber-400 to-amber-600 rounded-full flex items-center justify-end pr-2 transition-all"
+                      className="h-full bg-amber-500 rounded-full flex items-center justify-end pr-2 transition-all"
                       style={{ width: `${Math.max(pct, 5)}%` }}
                     >
                       {pct > 20 && <span className="text-xs font-bold text-white">{formatMoney(cat.totalRevenue)}원</span>}
@@ -189,7 +189,7 @@ export const AdminCategoryStatsPage: React.FC<Props> = ({ shops, ads, shopping }
       </div>
 
       {/* Detailed Table */}
-      <div className="bg-white rounded-xl border border-gray-200 p-5">
+      <div className="bg-white rounded-lg shadow-sm p-5">
         <h3 className="text-base font-bold text-gray-800 mb-4">업종별 상세 현황</h3>
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
@@ -210,7 +210,7 @@ export const AdminCategoryStatsPage: React.FC<Props> = ({ shops, ads, shopping }
                 <tr key={cat.category} className="border-b border-gray-50 hover:bg-gray-50 transition">
                   <td className="py-3 px-2">
                     <div className="flex items-center gap-2">
-                      <TagIcon className="w-4 h-4 text-gray-300" />
+                      <Tag className="w-4 h-4 text-gray-300" />
                       <span className="font-bold text-gray-800">{cat.category}</span>
                     </div>
                   </td>
@@ -235,13 +235,13 @@ export const AdminCategoryStatsPage: React.FC<Props> = ({ shops, ads, shopping }
   );
 };
 
-const HighlightCard: React.FC<{ icon: React.ReactNode; label: string; value: string; sub: string; bg: string }> = ({ icon, label, value, sub, bg }) => (
-  <div className="bg-white rounded-xl border border-gray-200 p-5">
+const HighlightCard: React.FC<{ icon: React.ReactNode; label: string; value: string; sub: string }> = ({ icon, label, value, sub }) => (
+  <div className="bg-white rounded-lg shadow-sm p-5">
     <div className="flex items-center gap-2 mb-2">
-      <div className={`w-8 h-8 rounded-lg ${bg} flex items-center justify-center`}>{icon}</div>
+      {icon}
       <span className="text-xs text-gray-400 font-medium">{label}</span>
     </div>
-    <p className="text-xl font-extrabold text-gray-900">{value}</p>
+    <p className="text-xl font-bold text-gray-900">{value}</p>
     <p className="text-xs text-gray-400 mt-1">{sub}</p>
   </div>
 );

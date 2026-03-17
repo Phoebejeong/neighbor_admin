@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { PhotoIcon, XMarkIcon } from '@heroicons/react/24/outline';
+import { ImagePlus, X } from 'lucide-react';
 import { useToast } from './Toast';
 
 interface Props {
@@ -55,7 +55,7 @@ export const ImageUpload: React.FC<Props> = ({ images, onChange, max = 5, label 
               onClick={() => remove(i)}
               className="absolute top-0.5 right-0.5 w-5 h-5 bg-black/60 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition"
             >
-              <XMarkIcon className="w-3 h-3 text-white" />
+              <X className="w-3 h-3 text-white" />
             </button>
           </div>
         ))}
@@ -64,7 +64,7 @@ export const ImageUpload: React.FC<Props> = ({ images, onChange, max = 5, label 
             onClick={() => ref.current?.click()}
             className="w-20 h-20 rounded-lg border-2 border-dashed border-gray-300 hover:border-blue-400 flex flex-col items-center justify-center gap-1 transition text-gray-400 hover:text-blue-500"
           >
-            <PhotoIcon className="w-5 h-5" />
+            <ImagePlus className="w-5 h-5" />
             <span className="text-xs font-medium">추가</span>
           </button>
         )}

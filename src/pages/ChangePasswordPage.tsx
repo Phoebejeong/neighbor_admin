@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { useToast } from '../components/Toast';
-import { KeyIcon } from '@heroicons/react/24/outline';
+import { KeyRound } from 'lucide-react';
 
 interface Props {
   onBack: () => void;
@@ -38,13 +38,14 @@ export const ChangePasswordPage: React.FC<Props> = ({ onBack, isAdmin }) => {
   return (
     <div className="max-w-md mx-auto">
       <div className="mb-6">
-        <h2 className="text-xl font-extrabold pl-1">비밀번호 변경</h2>
+        <h2 className="text-xl font-bold pl-1 text-gray-900">비밀번호 변경</h2>
         <p className="text-sm text-gray-500 mt-1">안전한 비밀번호로 변경해주세요</p>
       </div>
 
-      <div className="bg-white rounded-xl border border-gray-200 p-6">
-        <div className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center mb-5">
-          <KeyIcon className="w-6 h-6 text-blue-500" />
+      <div className="bg-white rounded-lg shadow-sm">
+        <div className="p-6">
+        <div className="mb-5">
+          <KeyRound className="w-6 h-6 text-blue-500" />
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -103,11 +104,12 @@ export const ChangePasswordPage: React.FC<Props> = ({ onBack, isAdmin }) => {
             <button type="button" onClick={onBack} className="flex-1 py-3 rounded-lg border border-gray-200 text-sm font-medium text-gray-500 hover:bg-gray-50 transition">
               취소
             </button>
-            <button type="submit" className="flex-1 py-3 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold transition">
+            <button type="submit" className="flex-1 py-3 rounded-lg bg-[#222] hover:bg-[#333] text-white text-sm font-semibold transition">
               변경하기
             </button>
           </div>
         </form>
+        </div>
       </div>
     </div>
   );

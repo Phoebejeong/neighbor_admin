@@ -3,11 +3,11 @@ import { LocalShop } from '../data/types';
 import { apartments } from '../data/mockData';
 import { formatMoney, getDistanceKm } from '../data/utils';
 import {
-  MapPinIcon,
-  BuildingStorefrontIcon,
-  BuildingOffice2Icon,
-  SignalIcon,
-} from '@heroicons/react/24/outline';
+  MapPin,
+  Store,
+  Building2,
+  Signal,
+} from 'lucide-react';
 
 interface Props {
   shops: LocalShop[];
@@ -71,7 +71,7 @@ export const AdminMapPage: React.FC<Props> = ({ shops }) => {
   return (
     <div>
       <div className="mb-6">
-        <h2 className="text-xl font-extrabold pl-1">상가 밀집 지도</h2>
+        <h2 className="text-xl font-bold pl-1">상가 밀집 지도</h2>
         <p className="text-sm text-gray-500 mt-1">지역별 상가 분포 · 아파트 커버리지 현황</p>
       </div>
 
@@ -81,12 +81,12 @@ export const AdminMapPage: React.FC<Props> = ({ shops }) => {
           <button
             key={zone.id}
             onClick={() => setSelectedZone(selectedZone === zone.id ? null : zone.id)}
-            className={`bg-white rounded-xl border-2 p-5 text-left transition ${
-              selectedZone === zone.id ? 'border-amber-400 shadow-md' : 'border-gray-200 hover:border-gray-300'
+            className={`bg-white rounded-lg shadow-sm p-5 text-left transition ${
+              selectedZone === zone.id ? 'ring-2 ring-amber-400 shadow-md' : 'hover:shadow-md'
             }`}
           >
             <div className="flex items-center justify-between mb-3">
-              <h3 className="text-lg font-extrabold text-gray-900">{zone.name}</h3>
+              <h3 className="text-lg font-bold text-gray-900">{zone.name}</h3>
               <div className={`w-3 h-3 rounded-full ${
                 zone.shops.length >= 5 ? 'bg-emerald-500' : zone.shops.length >= 2 ? 'bg-amber-400' : 'bg-red-400'
               }`} />
@@ -94,11 +94,11 @@ export const AdminMapPage: React.FC<Props> = ({ shops }) => {
             <div className="grid grid-cols-2 gap-3">
               <div>
                 <p className="text-xs text-gray-400">등록 상가</p>
-                <p className="text-xl font-extrabold text-blue-600">{zone.shops.length}개</p>
+                <p className="text-xl font-bold text-blue-600">{zone.shops.length}개</p>
               </div>
               <div>
                 <p className="text-xs text-gray-400">아파트 단지</p>
-                <p className="text-xl font-extrabold text-gray-800">{zone.apartments.length}개</p>
+                <p className="text-xl font-bold text-gray-800">{zone.apartments.length}개</p>
               </div>
               <div>
                 <p className="text-xs text-gray-400">총 세대수</p>
@@ -110,7 +110,7 @@ export const AdminMapPage: React.FC<Props> = ({ shops }) => {
               </div>
             </div>
             <div className="mt-3 flex items-center gap-1.5">
-              <SignalIcon className="w-3.5 h-3.5 text-gray-400" />
+              <Signal className="w-3.5 h-3.5 text-gray-400" />
               <span className="text-xs text-gray-500">상가/단지 비율: <strong>{zone.density}</strong></span>
             </div>
           </button>
@@ -119,7 +119,7 @@ export const AdminMapPage: React.FC<Props> = ({ shops }) => {
 
       {/* Selected Zone Detail */}
       {selectedZoneData && (
-        <div className="bg-white rounded-xl border border-gray-200 p-5 mb-6">
+        <div className="bg-white rounded-lg shadow-sm p-5 mb-6">
           <h3 className="text-base font-bold text-gray-800 mb-4">{selectedZoneData.name} 상세</h3>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* Category Distribution */}
@@ -155,7 +155,7 @@ export const AdminMapPage: React.FC<Props> = ({ shops }) => {
               <div className="space-y-2 max-h-60 overflow-y-auto">
                 {selectedZoneData.shops.map(shop => (
                   <div key={shop.id} className="flex items-center gap-3 p-2 rounded-lg border border-gray-100">
-                    <BuildingStorefrontIcon className="w-4 h-4 text-gray-400 shrink-0" />
+                    <Store className="w-4 h-4 text-gray-400 shrink-0" />
                     <div className="flex-1 min-w-0">
                       <span className="text-sm font-bold text-gray-800">{shop.name}</span>
                       <span className="text-xs text-gray-400 ml-2">{shop.category}</span>
@@ -170,7 +170,7 @@ export const AdminMapPage: React.FC<Props> = ({ shops }) => {
       )}
 
       {/* Apartment Coverage Table */}
-      <div className="bg-white rounded-xl border border-gray-200 p-5">
+      <div className="bg-white rounded-lg shadow-sm p-5">
         <h3 className="text-base font-bold text-gray-800 mb-4">단지별 상가 밀집도</h3>
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
@@ -189,7 +189,7 @@ export const AdminMapPage: React.FC<Props> = ({ shops }) => {
                 <tr key={apt.id} className="border-b border-gray-50 hover:bg-gray-50 transition">
                   <td className="py-3 px-2">
                     <div className="flex items-center gap-2">
-                      <BuildingOffice2Icon className="w-4 h-4 text-gray-300 shrink-0" />
+                      <Building2 className="w-4 h-4 text-gray-300 shrink-0" />
                       <div>
                         <p className="font-bold text-gray-800">{apt.name}</p>
                         <p className="text-xs text-gray-400">{apt.address}</p>
@@ -204,7 +204,7 @@ export const AdminMapPage: React.FC<Props> = ({ shops }) => {
                   </td>
                   <td className="py-3 px-2 text-right font-bold text-blue-600">{formatMoney(apt.activeUsers || 0)}</td>
                   <td className="py-3 px-2 text-right">
-                    <span className={`text-lg font-extrabold ${apt.nearbyShops >= 4 ? 'text-emerald-600' : apt.nearbyShops >= 2 ? 'text-amber-600' : 'text-red-500'}`}>
+                    <span className={`text-lg font-bold ${apt.nearbyShops >= 4 ? 'text-emerald-600' : apt.nearbyShops >= 2 ? 'text-amber-600' : 'text-red-500'}`}>
                       {apt.nearbyShops}
                     </span>
                   </td>

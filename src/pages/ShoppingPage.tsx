@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { PlusIcon, PencilSquareIcon, TrashIcon } from '@heroicons/react/24/outline';
+import { Plus, SquarePen, Trash2 } from 'lucide-react';
 import { ShoppingItem } from '../data/types';
 import { formatMoney, genId } from '../data/utils';
 import { Modal } from '../components/Modal';
@@ -42,17 +42,17 @@ export const ShoppingPage: React.FC<Props> = ({ items, setItems, readOnly }) => 
     <div>
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h2 className="text-xl font-extrabold pl-1">실속쇼핑 관리</h2>
+          <h2 className="text-xl font-bold pl-1">실속쇼핑 관리</h2>
           <p className="text-sm text-gray-500 mt-1">유료 등록 · 입주민 전용 할인 상품 관리</p>
         </div>
         {!readOnly && (
-          <button onClick={openNew} className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2.5 rounded-lg text-sm font-semibold flex items-center gap-2 transition">
-            <PlusIcon className="w-4 h-4" /> 상품 등록
+          <button onClick={openNew} className="bg-[#222] hover:bg-[#333] text-white px-4 py-2.5 rounded-lg text-sm font-semibold flex items-center gap-2 transition">
+            <Plus className="w-4 h-4" /> 상품 등록
           </button>
         )}
       </div>
 
-      <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
+      <div className="bg-white rounded-lg shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
@@ -83,7 +83,7 @@ export const ShoppingPage: React.FC<Props> = ({ items, setItems, readOnly }) => 
                     <td className="px-4 py-3.5 text-right font-semibold text-gray-700">{formatMoney(item.viewCount)}회</td>
                     <td className="px-4 py-3.5 text-right font-semibold">{formatMoney(item.amount)}원</td>
                     <td className="px-4 py-3.5">
-                      <span className={`text-xs px-2 py-1 rounded-full font-medium ${item.paymentStatus === 'paid' ? 'bg-emerald-100 text-emerald-600' : 'bg-red-100 text-red-500'}`}>
+                      <span className={`text-xs font-medium ${item.paymentStatus === 'paid' ? 'text-emerald-600' : 'text-red-500'}`}>
                         {item.paymentStatus === 'paid' ? '결제완료' : '미결제'}
                       </span>
                     </td>
@@ -91,8 +91,8 @@ export const ShoppingPage: React.FC<Props> = ({ items, setItems, readOnly }) => 
                     {!readOnly && (
                       <td className="px-4 py-3.5">
                         <div className="flex items-center gap-1">
-                          <button onClick={() => openEdit(item)} className="p-1.5 rounded-lg hover:bg-blue-100 text-gray-400 hover:text-blue-600 transition"><PencilSquareIcon className="w-4 h-4" /></button>
-                          <button onClick={() => remove(item.id)} className="p-1.5 rounded-lg hover:bg-red-100 text-gray-400 hover:text-red-500 transition"><TrashIcon className="w-4 h-4" /></button>
+                          <button onClick={() => openEdit(item)} className="p-1.5 rounded-lg hover:bg-blue-100 text-gray-400 hover:text-blue-600 transition"><SquarePen className="w-4 h-4" /></button>
+                          <button onClick={() => remove(item.id)} className="p-1.5 rounded-lg hover:bg-red-100 text-gray-400 hover:text-red-500 transition"><Trash2 className="w-4 h-4" /></button>
                         </div>
                       </td>
                     )}
@@ -134,7 +134,7 @@ export const ShoppingPage: React.FC<Props> = ({ items, setItems, readOnly }) => 
             </div>
             <div className="flex gap-2 pt-2">
               <button onClick={close} className="flex-1 py-2.5 rounded-lg border border-gray-200 text-sm font-medium text-gray-500 hover:bg-gray-50 transition">취소</button>
-              <button onClick={save} className="flex-1 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold transition">{editing.id ? '저장' : '등록하기'}</button>
+              <button onClick={save} className="flex-1 py-2.5 rounded-lg bg-[#222] hover:bg-[#333] text-white text-sm font-semibold transition">{editing.id ? '저장' : '등록하기'}</button>
             </div>
           </div>
         )}

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { PencilSquareIcon, CheckCircleIcon, ExclamationCircleIcon, PlusIcon, TrashIcon, XMarkIcon, BuildingOffice2Icon } from '@heroicons/react/24/outline';
+import { SquarePen, CircleCheck, CircleAlert, Plus, Trash2, X, Building2 } from 'lucide-react';
 import { LocalShop, CATEGORIES, ICONS } from '../data/types';
 import { apartments } from '../data/mockData';
 import { ImageUpload } from '../components/ImageUpload';
@@ -97,15 +97,15 @@ export const MyShopPage: React.FC<Props> = ({ shops, setShops }) => {
       {/* 헤더 */}
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h2 className="text-xl font-extrabold pl-1">내 가게 관리</h2>
+          <h2 className="text-xl font-bold pl-1">내 가게 관리</h2>
           <p className="text-sm text-gray-500 mt-1">등록된 가게를 관리하고 입주민 앱에 노출하세요 ({shops.length}/{MAX_SHOPS})</p>
         </div>
         {canAdd && shops.length > 0 && (
           <button
             onClick={openCreate}
-            className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2.5 rounded-lg text-sm font-semibold flex items-center gap-2 transition"
+            className="bg-[#222] hover:bg-[#333] text-white px-4 py-2.5 rounded-lg text-sm font-semibold flex items-center gap-2 transition"
           >
-            <PlusIcon className="w-4 h-4" /> 가게 추가
+            <Plus className="w-4 h-4" /> 가게 추가
           </button>
         )}
       </div>
@@ -115,9 +115,9 @@ export const MyShopPage: React.FC<Props> = ({ shops, setShops }) => {
         <div className="flex flex-col items-center justify-center py-24">
           <button
             onClick={openCreate}
-            className="w-20 h-20 rounded-2xl bg-blue-50 hover:bg-blue-100 border-2 border-dashed border-blue-300 flex items-center justify-center transition group"
+            className="w-20 h-20 rounded-lg bg-blue-50 hover:bg-blue-100 border-2 border-dashed border-blue-300 flex items-center justify-center transition group"
           >
-            <PlusIcon className="w-10 h-10 text-blue-400 group-hover:text-blue-600 transition" />
+            <Plus className="w-10 h-10 text-blue-400 group-hover:text-blue-600 transition" />
           </button>
           <div className="mt-5 text-center">
             <p className="text-lg font-bold text-gray-800">내 가게를 등록해보세요</p>
@@ -131,7 +131,7 @@ export const MyShopPage: React.FC<Props> = ({ shops, setShops }) => {
             const aptNames = getApartmentNames(shop.targetApartments);
             const aptCount = shop.targetApartments.length;
             return (
-              <div key={shop.id} className="bg-white rounded-xl border border-gray-200 overflow-hidden">
+              <div key={shop.id} className="bg-white rounded-lg shadow-sm overflow-hidden">
                 {/* 헤더 */}
                 <div className="px-4 py-3 flex items-center justify-between">
                   <div className="flex items-center gap-2.5 min-w-0">
@@ -144,14 +144,14 @@ export const MyShopPage: React.FC<Props> = ({ shops, setShops }) => {
                     </div>
                   </div>
                   <div className="flex items-center gap-2 shrink-0">
-                    <span className={`text-xs px-2 py-0.5 rounded-full font-semibold ${shop.isHomeVisible ? 'bg-emerald-100 text-emerald-700' : 'bg-gray-100 text-gray-400'}`}>
+                    <span className={`text-xs font-semibold ${shop.isHomeVisible ? 'text-emerald-600' : 'text-gray-400'}`}>
                       {shop.isHomeVisible ? '노출 중' : '비노출'}
                     </span>
                     <button onClick={() => openEdit(shop)} className="p-1.5 rounded-lg hover:bg-blue-50 text-gray-400 hover:text-blue-600 transition">
-                      <PencilSquareIcon className="w-4 h-4" />
+                      <SquarePen className="w-4 h-4" />
                     </button>
                     <button onClick={() => deleteShop(shop.id)} className="p-1.5 rounded-lg hover:bg-red-50 text-gray-400 hover:text-red-500 transition">
-                      <TrashIcon className="w-4 h-4" />
+                      <Trash2 className="w-4 h-4" />
                     </button>
                   </div>
                 </div>
@@ -166,7 +166,7 @@ export const MyShopPage: React.FC<Props> = ({ shops, setShops }) => {
                 {/* 아파트 */}
                 {aptCount > 0 && (
                   <div className="flex items-center gap-2 px-4 py-2 border-t border-gray-100 bg-gray-50/50">
-                    <BuildingOffice2Icon className="w-3.5 h-3.5 text-gray-400 shrink-0" />
+                    <Building2 className="w-3.5 h-3.5 text-gray-400 shrink-0" />
                     <span className="text-xs font-semibold text-gray-500 shrink-0">총 {aptCount}개</span>
                     <span className="text-gray-300">|</span>
                     <div className="flex items-center gap-1 flex-wrap">
@@ -190,17 +190,17 @@ export const MyShopPage: React.FC<Props> = ({ shops, setShops }) => {
           <div className="absolute inset-0 bg-black/40" onClick={closeModal} />
 
           {/* 모달 */}
-          <div className="relative bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+          <div className="relative bg-white rounded-lg shadow-lg w-full max-w-2xl max-h-[90vh] overflow-y-auto">
             {/* 헤더 */}
-            <div className="sticky top-0 bg-white border-b border-gray-100 px-6 py-4 flex items-center justify-between z-10 rounded-t-2xl">
+            <div className="sticky top-0 bg-white border-b border-gray-100 px-6 py-4 flex items-center justify-between z-10 rounded-t-lg">
               <div>
-                <h3 className="text-lg font-extrabold">{modalMode === 'create' ? '새 가게 등록' : '가게 정보 수정'}</h3>
+                <h3 className="text-lg font-bold">{modalMode === 'create' ? '새 가게 등록' : '가게 정보 수정'}</h3>
                 <p className="text-xs text-gray-500 mt-0.5">
                   {modalMode === 'create' ? '가게 정보를 등록하면 입주민 앱에 무료로 노출됩니다' : '수정한 정보는 즉시 앱에 반영됩니다'}
                 </p>
               </div>
               <button onClick={closeModal} className="w-8 h-8 rounded-lg hover:bg-gray-100 flex items-center justify-center transition">
-                <XMarkIcon className="w-5 h-5 text-gray-400" />
+                <X className="w-5 h-5 text-gray-400" />
               </button>
             </div>
 
@@ -232,7 +232,7 @@ export const MyShopPage: React.FC<Props> = ({ shops, setShops }) => {
               <div>
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex items-center gap-2">
-                    <BuildingOffice2Icon className="w-4 h-4 text-gray-500" />
+                    <Building2 className="w-4 h-4 text-gray-500" />
                     <label className="text-xs font-semibold text-gray-500">노출 아파트 선택 *</label>
                   </div>
                   <button
@@ -245,7 +245,7 @@ export const MyShopPage: React.FC<Props> = ({ shops, setShops }) => {
                 </div>
                 <p className="text-xs text-gray-400 mb-3">이웃상가는 무료입니다. 노출할 아파트를 선택해주세요.</p>
 
-                <div className="border border-gray-200 rounded-xl overflow-hidden max-h-60 overflow-y-auto">
+                <div className="border border-gray-200 rounded-lg overflow-hidden max-h-60 overflow-y-auto">
                   {apartments.map((apt, i) => {
                     const checked = form.targetApartments.includes(apt.id);
                     return (
@@ -275,10 +275,10 @@ export const MyShopPage: React.FC<Props> = ({ shops, setShops }) => {
                     {form.targetApartments.length}개 아파트 선택됨
                   </p>
                 )}
-                {errors.apartments && <p className="text-xs text-red-500 mt-1 flex items-center gap-1"><ExclamationCircleIcon className="w-3.5 h-3.5" />{errors.apartments}</p>}
+                {errors.apartments && <p className="text-xs text-red-500 mt-1 flex items-center gap-1"><CircleAlert className="w-3.5 h-3.5" />{errors.apartments}</p>}
               </div>
 
-              <div className="bg-gray-50 rounded-xl p-4">
+              <div className="bg-gray-50 rounded-lg p-4">
                 <p className="text-xs text-gray-500">
                   이웃상가 등록은 <strong className="text-blue-600">무료</strong>입니다. 등록하시면 선택한 아파트 입주민 앱의 "우리동네 &gt; 이웃상가" 탭에 노출됩니다.
                 </p>
@@ -286,11 +286,11 @@ export const MyShopPage: React.FC<Props> = ({ shops, setShops }) => {
             </div>
 
             {/* 하단 버튼 */}
-            <div className="sticky bottom-0 bg-white border-t border-gray-100 px-6 py-4 flex gap-3 rounded-b-2xl">
+            <div className="sticky bottom-0 bg-white border-t border-gray-100 px-6 py-4 flex gap-3 rounded-b-lg">
               <button onClick={closeModal} className="flex-1 py-3 rounded-lg border border-gray-200 text-sm font-medium text-gray-500 hover:bg-gray-50 transition">
                 취소
               </button>
-              <button onClick={handleSave} className="flex-1 py-3 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold transition">
+              <button onClick={handleSave} className="flex-1 py-3 rounded-lg bg-[#222] hover:bg-[#333] text-white text-sm font-semibold transition">
                 {modalMode === 'create' ? '가게 등록하기' : '저장하기'}
               </button>
             </div>
@@ -312,6 +312,6 @@ const Field: React.FC<{ label: string; value: string; onChange: (v: string) => v
   <div>
     <label className="block text-xs font-semibold text-gray-500 mb-1.5">{label}</label>
     <input value={value} onChange={e => onChange(e.target.value)} placeholder={placeholder} className={`w-full border rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:outline-none ${error ? 'border-red-300 focus:ring-red-500' : 'border-gray-200 focus:ring-blue-500'}`} />
-    {error && <p className="text-xs text-red-500 mt-1 flex items-center gap-1"><ExclamationCircleIcon className="w-3.5 h-3.5" />{error}</p>}
+    {error && <p className="text-xs text-red-500 mt-1 flex items-center gap-1"><CircleAlert className="w-3.5 h-3.5" />{error}</p>}
   </div>
 );

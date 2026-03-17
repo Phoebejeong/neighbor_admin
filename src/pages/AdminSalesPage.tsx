@@ -1,16 +1,16 @@
 import React, { useState, useMemo } from 'react';
 import { Lead, LocalShop } from '../data/types';
 import {
-  PhoneIcon,
-  EnvelopeIcon,
-  MapPinIcon,
-  FunnelIcon,
-  UserPlusIcon,
-  CheckCircleIcon,
-  XCircleIcon,
-  ChatBubbleLeftIcon,
-  ArrowPathIcon,
-} from '@heroicons/react/24/outline';
+  Phone,
+  Mail,
+  MapPin,
+  Filter,
+  UserPlus,
+  CircleCheck,
+  XCircle,
+  MessageSquare,
+  RefreshCw,
+} from 'lucide-react';
 
 interface Props {
   leads: Lead[];
@@ -18,18 +18,18 @@ interface Props {
   shops: LocalShop[];
 }
 
-const STATUS_MAP: Record<Lead['status'], { label: string; cls: string; bg: string }> = {
-  new: { label: '신규', cls: 'text-blue-700', bg: 'bg-blue-100' },
-  contacted: { label: '연락완료', cls: 'text-amber-700', bg: 'bg-amber-100' },
-  interested: { label: '관심', cls: 'text-emerald-700', bg: 'bg-emerald-100' },
-  registered: { label: '가입완료', cls: 'text-purple-700', bg: 'bg-purple-100' },
-  rejected: { label: '거절', cls: 'text-red-600', bg: 'bg-red-100' },
+const STATUS_MAP: Record<Lead['status'], { label: string; cls: string }> = {
+  new: { label: '신규', cls: 'text-blue-600' },
+  contacted: { label: '연락완료', cls: 'text-amber-600' },
+  interested: { label: '관심', cls: 'text-emerald-600' },
+  registered: { label: '가입완료', cls: 'text-purple-600' },
+  rejected: { label: '거절', cls: 'text-red-500' },
 };
 
 const METHOD_ICON: Record<string, React.ReactNode> = {
-  phone: <PhoneIcon className="w-3.5 h-3.5" />,
-  visit: <MapPinIcon className="w-3.5 h-3.5" />,
-  email: <EnvelopeIcon className="w-3.5 h-3.5" />,
+  phone: <Phone className="w-3.5 h-3.5" />,
+  visit: <MapPin className="w-3.5 h-3.5" />,
+  email: <Mail className="w-3.5 h-3.5" />,
 };
 
 const RESULT_LABEL: Record<string, string> = {
@@ -68,7 +68,7 @@ export const AdminSalesPage: React.FC<Props> = ({ leads, setLeads, shops }) => {
   return (
     <div>
       <div className="mb-6">
-        <h2 className="text-xl font-extrabold pl-1">영업 대시보드</h2>
+        <h2 className="text-xl font-bold pl-1">영업 대시보드</h2>
         <p className="text-sm text-gray-500 mt-1">미가입 상가 관리 · 컨택 이력 추적</p>
       </div>
 
@@ -84,19 +84,19 @@ export const AdminSalesPage: React.FC<Props> = ({ leads, setLeads, shops }) => {
 
       {/* Conversion Rates */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-        <div className="bg-white rounded-xl border border-gray-200 p-5">
+        <div className="bg-white rounded-lg shadow-sm p-5">
           <div className="flex items-center justify-between mb-3">
             <span className="text-sm font-bold text-gray-600">전환율 (가입완료/전체)</span>
-            <span className="text-2xl font-extrabold text-purple-600">{conversionRate}%</span>
+            <span className="text-2xl font-bold text-purple-600">{conversionRate}%</span>
           </div>
           <div className="w-full h-3 bg-gray-100 rounded-full overflow-hidden">
             <div className="h-full bg-purple-500 rounded-full transition-all" style={{ width: `${conversionRate}%` }} />
           </div>
         </div>
-        <div className="bg-white rounded-xl border border-gray-200 p-5">
+        <div className="bg-white rounded-lg shadow-sm p-5">
           <div className="flex items-center justify-between mb-3">
             <span className="text-sm font-bold text-gray-600">관심률 (관심+가입/전체)</span>
-            <span className="text-2xl font-extrabold text-emerald-600">{interestRate}%</span>
+            <span className="text-2xl font-bold text-emerald-600">{interestRate}%</span>
           </div>
           <div className="w-full h-3 bg-gray-100 rounded-full overflow-hidden">
             <div className="h-full bg-emerald-500 rounded-full transition-all" style={{ width: `${interestRate}%` }} />
@@ -106,14 +106,14 @@ export const AdminSalesPage: React.FC<Props> = ({ leads, setLeads, shops }) => {
 
       {/* Filter */}
       <div className="flex items-center gap-2 mb-4">
-        <FunnelIcon className="w-4 h-4 text-gray-400" />
-        <span className="text-xs text-gray-500 font-medium">상태 필터</span>
+        <Filter className="w-4 h-4 text-gray-400 shrink-0" />
+        <span className="text-xs text-gray-500 font-medium shrink-0">상태 필터</span>
         {(['all', 'new', 'contacted', 'interested', 'registered', 'rejected'] as const).map(s => (
           <button
             key={s}
             onClick={() => setFilter(s)}
-            className={`text-xs px-3 py-1.5 rounded-full font-medium transition ${
-              filter === s ? 'bg-gray-900 text-white' : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
+            className={`text-xs px-3 py-1.5 rounded-full font-medium transition whitespace-nowrap ${
+              filter === s ? 'bg-gray-900 text-white' : 'text-gray-500 hover:text-gray-900'
             }`}
           >
             {s === 'all' ? '전체' : STATUS_MAP[s].label}
@@ -124,7 +124,7 @@ export const AdminSalesPage: React.FC<Props> = ({ leads, setLeads, shops }) => {
       {/* Lead List */}
       <div className="space-y-3">
         {filtered.length === 0 ? (
-          <div className="bg-white rounded-xl border border-gray-200 p-10 text-center">
+          <div className="bg-white rounded-lg shadow-sm p-10 text-center">
             <p className="text-sm text-gray-400">해당 상태의 리드가 없습니다</p>
           </div>
         ) : (
@@ -132,13 +132,13 @@ export const AdminSalesPage: React.FC<Props> = ({ leads, setLeads, shops }) => {
             const st = STATUS_MAP[lead.status];
             const isExpanded = expandedId === lead.id;
             return (
-              <div key={lead.id} className="bg-white rounded-xl border border-gray-200 overflow-hidden">
+              <div key={lead.id} className="bg-white rounded-lg shadow-sm overflow-hidden">
                 <div
                   className="flex items-center gap-4 p-4 cursor-pointer hover:bg-gray-50 transition"
                   onClick={() => setExpandedId(isExpanded ? null : lead.id)}
                 >
                   {/* Status badge */}
-                  <span className={`text-xs px-2.5 py-1 rounded-full font-bold ${st.bg} ${st.cls} shrink-0`}>
+                  <span className={`text-xs font-bold ${st.cls} shrink-0`}>
                     {st.label}
                   </span>
 
@@ -159,7 +159,7 @@ export const AdminSalesPage: React.FC<Props> = ({ leads, setLeads, shops }) => {
 
                   {/* Contact count */}
                   <div className="flex items-center gap-1 shrink-0">
-                    <ChatBubbleLeftIcon className="w-4 h-4 text-gray-300" />
+                    <MessageSquare className="w-4 h-4 text-gray-300" />
                     <span className="text-xs font-medium text-gray-500">{lead.contactLogs.length}</span>
                   </div>
 
@@ -179,8 +179,8 @@ export const AdminSalesPage: React.FC<Props> = ({ leads, setLeads, shops }) => {
                         <button
                           key={s}
                           onClick={() => updateStatus(lead.id, s)}
-                          className={`text-xs px-2.5 py-1 rounded-full font-medium transition ${
-                            lead.status === s ? `${STATUS_MAP[s].bg} ${STATUS_MAP[s].cls}` : 'bg-white border border-gray-200 text-gray-500 hover:bg-gray-100'
+                          className={`text-xs font-medium transition ${
+                            lead.status === s ? `${STATUS_MAP[s].cls} font-bold` : 'text-gray-400 hover:text-gray-600'
                           }`}
                         >
                           {STATUS_MAP[s].label}
@@ -205,11 +205,11 @@ export const AdminSalesPage: React.FC<Props> = ({ leads, setLeads, shops }) => {
                                 <span className="text-xs text-gray-400">
                                   {log.method === 'phone' ? '전화' : log.method === 'visit' ? '방문' : '이메일'}
                                 </span>
-                                <span className={`text-xs px-1.5 py-0.5 rounded font-medium ${
-                                  log.result === 'interested' ? 'bg-emerald-100 text-emerald-600' :
-                                  log.result === 'rejected' ? 'bg-red-100 text-red-500' :
-                                  log.result === 'callback' ? 'bg-amber-100 text-amber-600' :
-                                  'bg-gray-100 text-gray-500'
+                                <span className={`text-xs font-medium ${
+                                  log.result === 'interested' ? 'text-emerald-600' :
+                                  log.result === 'rejected' ? 'text-red-500' :
+                                  log.result === 'callback' ? 'text-amber-600' :
+                                  'text-gray-500'
                                 }`}>
                                   {RESULT_LABEL[log.result]}
                                 </span>
@@ -232,8 +232,8 @@ export const AdminSalesPage: React.FC<Props> = ({ leads, setLeads, shops }) => {
 };
 
 const FunnelCard: React.FC<{ label: string; value: number; accent: string }> = ({ label, value, accent }) => (
-  <div className="bg-white rounded-xl border border-gray-200 p-4 text-center">
+  <div className="bg-white rounded-lg shadow-sm p-4 text-center">
     <p className="text-xs text-gray-400 font-medium">{label}</p>
-    <p className={`text-2xl font-extrabold mt-1 ${accent}`}>{value}</p>
+    <p className={`text-2xl font-bold mt-1 ${accent}`}>{value}</p>
   </div>
 );

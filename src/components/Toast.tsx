@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback, createContext, useContext } from 'react';
-import { CheckCircleIcon, ExclamationTriangleIcon, XMarkIcon } from '@heroicons/react/24/outline';
+import { CircleCheck, TriangleAlert, X } from 'lucide-react';
 
 type ToastType = 'success' | 'error' | 'info';
 interface ToastItem { id: number; message: string; type: ToastType; }
@@ -44,17 +44,17 @@ const ToastItem: React.FC<{ toast: ToastItem; onRemove: (id: number) => void }> 
     info: 'bg-blue-600',
   };
   const icons = {
-    success: <CheckCircleIcon className="w-5 h-5" />,
-    error: <ExclamationTriangleIcon className="w-5 h-5" />,
-    info: <CheckCircleIcon className="w-5 h-5" />,
+    success: <CircleCheck className="w-5 h-5" />,
+    error: <TriangleAlert className="w-5 h-5" />,
+    info: <CircleCheck className="w-5 h-5" />,
   };
 
   return (
-    <div className={`${colors[toast.type]} text-white px-4 py-3 rounded-xl shadow-lg flex items-center gap-3 min-w-[280px] animate-slide-up`}>
+    <div className={`${colors[toast.type]} text-white px-4 py-3 rounded-lg shadow-lg flex items-center gap-3 min-w-[280px] animate-slide-up`}>
       {icons[toast.type]}
       <span className="text-sm font-medium flex-1">{toast.message}</span>
       <button onClick={() => onRemove(toast.id)} className="p-0.5 hover:bg-white/20 rounded transition">
-        <XMarkIcon className="w-4 h-4" />
+        <X className="w-4 h-4" />
       </button>
     </div>
   );
