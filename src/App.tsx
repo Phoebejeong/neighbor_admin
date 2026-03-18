@@ -79,7 +79,7 @@ function App() {
   if (isAdmin) {
     return (
       <ToastProvider>
-        <div className="min-h-screen bg-gray-50 text-gray-900">
+        <div className="min-h-screen bg-gray-50 text-gray-900 flex flex-col">
           <TopNav
             current={page}
             shopName="관리자"
@@ -88,7 +88,7 @@ function App() {
             onLogout={handleLogout}
             isAdmin
           />
-          <main className="w-full">
+          <main className="w-full flex-1">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
               {page === 'admin-stats' && <AdminStatsPage shops={allShops} ads={allAds} shopping={allShopping} />}
               {page === 'admin-shops' && <ShopsPage shops={allShops} setShops={setAllShops} readOnly />}
@@ -112,9 +112,9 @@ function App() {
   if (isFirstLogin && myShops.length === 0) {
     return (
       <ToastProvider>
-        <div className="min-h-screen bg-gray-50 text-gray-900">
+        <div className="min-h-screen bg-gray-50 text-gray-900 flex flex-col">
           <TopNav current="myshop" shopName={user} userEmail={userEmail} onNavigate={navigate} onLogout={handleLogout} />
-          <main className="w-full">
+          <main className="w-full flex-1">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
               <MyShopPage shops={myShops} setShops={(shops) => { setMyShops(shops); if (shops.length > 0) setIsFirstLogin(false); }} />
             </div>
@@ -130,7 +130,7 @@ function App() {
   // Shop owner mode
   return (
     <ToastProvider>
-      <div className="min-h-screen bg-gray-50 text-gray-900">
+      <div className="min-h-screen bg-gray-50 text-gray-900 flex flex-col">
         <TopNav
           current={page}
           shopName={myShops[0]?.name || user}
@@ -138,7 +138,7 @@ function App() {
           onNavigate={navigate}
           onLogout={handleLogout}
         />
-        <main className="w-full">
+        <main className="w-full flex-1">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
             {page === 'myshop' && <MyShopPage shops={myShops} setShops={setMyShops} />}
             {page === 'myads' && <MyAdsPage ads={myAds} setAds={setMyAds} shopName={myShops[0]?.name || user} shops={myShops} onNavigate={navigate} />}

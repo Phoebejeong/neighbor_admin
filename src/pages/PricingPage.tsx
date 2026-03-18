@@ -34,12 +34,10 @@ export const PricingPage: React.FC<Props> = ({ onNavigate }) => (
       </div>
 
       {/* 알짜광고 */}
-      <div className="bg-white rounded-lg border-2 border-[#ED1C24] p-6 flex flex-col relative shadow-sm">
-        <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-          <span className="text-xs font-bold text-white bg-[#ED1C24] px-3 py-1 rounded-full">인기</span>
-        </div>
-        <div className="mb-4">
+      <div className="glow-card rounded-lg p-6 flex flex-col relative shadow-lg">
+        <div className="flex items-center justify-between mb-4">
           <span className="text-xs font-bold text-[#ED1C24]">유료</span>
+          <span className="text-xs font-bold text-white bg-[#ED1C24] px-2.5 py-0.5 rounded-full">인기</span>
         </div>
         <h3 className="text-xl font-bold">알짜광고</h3>
         <p className="text-gray-500 text-sm mt-1 mb-4">기간 한정 이벤트 홍보</p>
