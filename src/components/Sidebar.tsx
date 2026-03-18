@@ -14,7 +14,17 @@ import {
   FileBarChart,
   Map,
   Tag,
+  Globe,
 } from 'lucide-react';
+
+// 임시 번역 함수 (나중에 제거)
+const setGoogleTranslateLang = (lang: string) => {
+  const select = document.querySelector('.goog-te-combo') as HTMLSelectElement | null;
+  if (select) {
+    select.value = lang;
+    select.dispatchEvent(new Event('change'));
+  }
+};
 
 const SHOP_NAV = [
   { key: 'stats', label: '광고 성과', icon: BarChart3 },
@@ -46,12 +56,15 @@ export const TopNav: React.FC<Props> = ({ current, shopName, userEmail, onNaviga
   const NAV = isAdmin ? ADMIN_NAV : SHOP_NAV;
   const defaultPage = isAdmin ? 'admin-stats' : 'stats';
   const [menuOpen, setMenuOpen] = useState(false);
+  const [langOpen, setLangOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+  const langRef = useRef<HTMLDivElement>(null);
 
   // 외부 클릭 시 닫기
   useEffect(() => {
     const handler = (e: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(e.target as Node)) setMenuOpen(false);
+      if (langRef.current && !langRef.current.contains(e.target as Node)) setLangOpen(false);
     };
     document.addEventListener('mousedown', handler);
     return () => document.removeEventListener('mousedown', handler);
@@ -91,6 +104,44 @@ export const TopNav: React.FC<Props> = ({ current, shopName, userEmail, onNaviga
               </button>
             ))}
           </nav>
+
+          {/* 임시 언어 전환 */}
+          <div className="relative mr-2" ref={langRef}>
+            <button
+              onClick={() => setLangOpen(!langOpen)}
+              className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium transition ${
+                isAdmin ? 'text-gray-400 hover:bg-white/10' : 'text-gray-500 hover:bg-gray-100'
+              }`}
+            >
+              <Globe className="w-3.5 h-3.5" />
+              Language
+              <svg className={`w-3 h-3 transition ${langOpen ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            {langOpen && (
+              <div className={`absolute right-0 top-full mt-1 w-36 rounded-lg shadow-sm border overflow-hidden z-50 animate-fade-in ${
+                isAdmin ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'
+              }`}>
+                {[
+                  { code: 'ko', label: '한국어', flag: '🇰🇷' },
+                  { code: 'en', label: 'English', flag: '🇺🇸' },
+                  { code: 'vi', label: 'Tiếng Việt', flag: '🇻🇳' },
+                ].map(({ code, label, flag }) => (
+                  <button
+                    key={code}
+                    onClick={() => { setGoogleTranslateLang(code); setLangOpen(false); }}
+                    className={`w-full flex items-center gap-2 px-3 py-2 text-xs font-medium transition ${
+                      isAdmin ? 'text-gray-300 hover:bg-gray-700' : 'text-gray-700 hover:bg-gray-50'
+                    }`}
+                  >
+                    <span>{flag}</span>
+                    {label}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
 
           {/* Right — Profile Dropdown */}
           <div className="relative" ref={menuRef}>
