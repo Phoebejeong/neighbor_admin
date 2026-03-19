@@ -92,47 +92,47 @@ export const MyAccountPage: React.FC<Props> = ({ name, email, phone, onSave, onB
   return (
     <div className="max-w-lg mx-auto">
       <div className="mb-6">
-        <h2 className="text-xl font-bold pl-1 text-gray-900">내 계정</h2>
-        <p className="text-sm text-gray-500 mt-1">계정 정보를 확인하고 수정할 수 있습니다</p>
+        <h2 className="text-xl font-bold pl-1 text-stone-900">내 계정</h2>
+        <p className="text-sm text-stone-500 mt-1">계정 정보를 확인하고 수정할 수 있습니다</p>
       </div>
 
       {/* 기본 정보 섹션 */}
       <div className="bg-white rounded-lg shadow-sm mb-4">
       <div className="p-6 space-y-5">
-        <h3 className="text-base font-bold text-gray-900">기본 정보</h3>
+        <h3 className="text-base font-bold text-stone-900">기본 정보</h3>
 
         <div>
-          <label className="block text-xs font-semibold text-gray-500 mb-1.5">이름</label>
+          <label className="block text-xs font-semibold text-stone-500 mb-1.5">이름</label>
           <input
             value={formName}
             onChange={e => setFormName(e.target.value)}
-            className="w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+            className="w-full border border-stone-200 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-[#7f2929] focus:outline-none"
           />
         </div>
 
         <div>
-          <label className="block text-xs font-semibold text-gray-500 mb-1.5">이메일</label>
+          <label className="block text-xs font-semibold text-stone-500 mb-1.5">이메일</label>
           <input
             value={email}
             disabled
-            className="w-full border border-gray-100 rounded-lg px-3 py-2.5 text-sm bg-gray-50 text-gray-400 cursor-not-allowed"
+            className="w-full border border-stone-100 rounded-lg px-3 py-2.5 text-sm bg-stone-50 text-stone-400 cursor-not-allowed"
           />
-          <p className="text-xs text-gray-400 mt-1">이메일은 변경할 수 없습니다</p>
+          <p className="text-xs text-stone-400 mt-1">이메일은 변경할 수 없습니다</p>
         </div>
 
         {/* 비밀번호 */}
         <div>
-          <label className="block text-xs font-semibold text-gray-500 mb-1.5">비밀번호</label>
+          <label className="block text-xs font-semibold text-stone-500 mb-1.5">비밀번호</label>
           <div className="flex items-center gap-2">
             <input
               value="••••••••"
               disabled
-              className="flex-1 border border-gray-100 rounded-lg px-3 py-2.5 text-sm bg-gray-50 text-gray-400 cursor-not-allowed"
+              className="flex-1 border border-stone-100 rounded-lg px-3 py-2.5 text-sm bg-stone-50 text-stone-400 cursor-not-allowed"
             />
             <button
               type="button"
               onClick={() => onNavigate('change-password')}
-              className="px-4 py-2.5 rounded-lg text-sm font-semibold text-blue-600 border border-blue-200 hover:bg-blue-50 transition whitespace-nowrap"
+              className="px-4 py-2.5 rounded-lg text-sm font-semibold text-[#7f2929] border border-[#F0D4D4] hover:bg-[#FDF2F2] transition whitespace-nowrap"
             >
               변경
             </button>
@@ -141,18 +141,18 @@ export const MyAccountPage: React.FC<Props> = ({ name, email, phone, onSave, onB
 
         {/* 휴대폰 번호 */}
         <div>
-          <label className="block text-xs font-semibold text-gray-500 mb-1.5">휴대폰 번호</label>
+          <label className="block text-xs font-semibold text-stone-500 mb-1.5">휴대폰 번호</label>
           {!phoneEditMode ? (
             <div className="flex items-center gap-2">
               <input
                 value={phone ? formatPhone(phone) : '등록된 번호 없음'}
                 disabled
-                className="flex-1 border border-gray-100 rounded-lg px-3 py-2.5 text-sm bg-gray-50 text-gray-400 cursor-not-allowed"
+                className="flex-1 border border-stone-100 rounded-lg px-3 py-2.5 text-sm bg-stone-50 text-stone-400 cursor-not-allowed"
               />
               <button
                 type="button"
                 onClick={() => { setPhoneEditMode(true); setFormPhone(phone ? formatPhone(phone) : ''); }}
-                className="px-4 py-2.5 rounded-lg text-sm font-semibold text-blue-600 border border-blue-200 hover:bg-blue-50 transition whitespace-nowrap"
+                className="px-4 py-2.5 rounded-lg text-sm font-semibold text-[#7f2929] border border-[#F0D4D4] hover:bg-[#FDF2F2] transition whitespace-nowrap"
               >
                 변경하기
               </button>
@@ -165,7 +165,7 @@ export const MyAccountPage: React.FC<Props> = ({ name, email, phone, onSave, onB
                   onChange={e => handlePhoneChange(e.target.value)}
                   placeholder="010-0000-0000"
                   disabled={verified}
-                  className="flex-1 border border-gray-200 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none disabled:bg-gray-50 disabled:text-gray-400"
+                  className="flex-1 border border-stone-200 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-[#7f2929] focus:outline-none disabled:bg-stone-50 disabled:text-stone-400"
                   autoFocus
                 />
                 {!verified && (
@@ -173,14 +173,14 @@ export const MyAccountPage: React.FC<Props> = ({ name, email, phone, onSave, onB
                     type="button" onClick={sendCode}
                     disabled={!phoneChanged}
                     className={`px-4 py-2.5 rounded-lg text-sm font-semibold whitespace-nowrap transition ${
-                      codeSent ? 'bg-gray-100 text-gray-600 hover:bg-gray-200' : 'bg-[#222] text-white hover:bg-[#333]'
-                    } disabled:bg-gray-200 disabled:text-gray-400`}
+                      codeSent ? 'bg-stone-100 text-stone-600 hover:bg-stone-200' : 'bg-[#222] text-white hover:bg-[#333]'
+                    } disabled:bg-stone-200 disabled:text-stone-400`}
                   >
                     {codeSent ? '재발송' : '인증번호 발송'}
                   </button>
                 )}
                 {verified && (
-                  <div className="flex items-center gap-1 px-3 text-emerald-600">
+                  <div className="flex items-center gap-1 px-3 text-emerald-500">
                     <ShieldCheck className="w-5 h-5" />
                     <span className="text-xs font-semibold">인증됨</span>
                   </div>
@@ -197,7 +197,7 @@ export const MyAccountPage: React.FC<Props> = ({ name, email, phone, onSave, onB
                         onChange={e => setVerifyCode(e.target.value.replace(/\D/g, '').slice(0, 6))}
                         placeholder="인증번호 6자리"
                         maxLength={6}
-                        className="w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none pr-16"
+                        className="w-full border border-stone-200 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-[#7f2929] focus:outline-none pr-16"
                       />
                       {timer > 0 && (
                         <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-mono text-red-500">
@@ -207,7 +207,7 @@ export const MyAccountPage: React.FC<Props> = ({ name, email, phone, onSave, onB
                     </div>
                     <button
                       type="button" onClick={checkCode} disabled={timer <= 0}
-                      className="px-4 py-2.5 rounded-lg bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700 transition disabled:bg-gray-200 disabled:text-gray-400"
+                      className="px-4 py-2.5 rounded-lg bg-[#7f2929] text-white text-sm font-semibold hover:bg-[#6B2222] transition disabled:bg-stone-200 disabled:text-stone-400"
                     >
                       확인
                     </button>
@@ -222,7 +222,7 @@ export const MyAccountPage: React.FC<Props> = ({ name, email, phone, onSave, onB
                 <button
                   type="button"
                   onClick={() => { setPhoneEditMode(false); setFormPhone(phone); setPhoneChanged(false); setCodeSent(false); setVerifyCode(''); }}
-                  className="text-xs text-gray-400 hover:text-gray-600 transition mt-2"
+                  className="text-xs text-stone-400 hover:text-stone-600 transition mt-2"
                 >
                   취소
                 </button>
@@ -233,13 +233,13 @@ export const MyAccountPage: React.FC<Props> = ({ name, email, phone, onSave, onB
 
         {/* 저장 */}
         <div className="flex gap-3 pt-2">
-          <button onClick={onBack} className="flex-1 py-3 rounded-lg border border-gray-200 text-sm font-medium text-gray-500 hover:bg-gray-50 transition">
+          <button onClick={onBack} className="flex-1 py-3 rounded-lg border border-stone-200 text-sm font-medium text-stone-500 hover:bg-stone-50 transition">
             취소
           </button>
           <button
             onClick={handleSave}
             disabled={!hasChanges}
-            className="flex-1 py-3 rounded-lg bg-[#222] hover:bg-[#333] text-white text-sm font-semibold transition disabled:bg-gray-200 disabled:text-gray-400"
+            className="flex-1 py-3 rounded-lg bg-[#222] hover:bg-[#333] text-white text-sm font-semibold transition disabled:bg-stone-200 disabled:text-stone-400"
           >
             저장하기
           </button>
@@ -249,69 +249,53 @@ export const MyAccountPage: React.FC<Props> = ({ name, email, phone, onSave, onB
 
       {/* 회원 탈퇴 */}
       <div className="flex justify-end mt-6 px-1">
-        <button onClick={() => setShowWithdrawConfirm(true)} className="text-xs text-gray-300 hover:text-red-500 transition">
+        <button onClick={() => setShowWithdrawConfirm(true)} className="text-xs text-stone-300 hover:text-red-500 transition">
           회원 탈퇴
         </button>
       </div>
 
       {/* 탈퇴 확인 모달 */}
       {showWithdrawConfirm && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-          <div className="absolute inset-0 bg-black/50" onClick={() => setShowWithdrawConfirm(false)} />
-          <div className="relative bg-white rounded-lg shadow-lg w-full max-w-md overflow-hidden">
-            <div className="p-6">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center shrink-0">
-                  <TriangleAlert className="w-5 h-5 text-red-500" />
-                </div>
-                <h3 className="text-lg font-bold text-gray-900">정말 탈퇴하시겠습니까?</h3>
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 animate-fade-in">
+          <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" onClick={() => setShowWithdrawConfirm(false)} />
+          <div className="relative bg-white rounded-lg shadow-lg w-full max-w-sm overflow-hidden animate-slide-up">
+            {/* 상단 아이콘 */}
+            <div className="pt-8 pb-4 flex justify-center">
+              <div className="w-14 h-14 rounded-full bg-red-50 border border-red-100 flex items-center justify-center">
+                <TriangleAlert className="w-7 h-7 text-red-500" />
               </div>
+            </div>
 
-              <div className="bg-red-50 rounded-lg p-4 mb-4 space-y-2">
-                <p className="text-sm font-bold text-red-700">탈퇴 시 아래 내용이 모두 삭제됩니다:</p>
-                <ul className="text-sm text-red-600 space-y-1.5 ml-1">
-                  <li className="flex items-start gap-2">
-                    <span className="mt-1.5 w-1 h-1 rounded-full bg-red-400 shrink-0" />
-                    등록된 모든 가게 정보가 영구 삭제됩니다
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="mt-1.5 w-1 h-1 rounded-full bg-red-400 shrink-0" />
-                    진행중인 유료 광고 및 실속쇼핑이 즉시 중단되며, 결제한 금액은 환불되지 않습니다
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="mt-1.5 w-1 h-1 rounded-full bg-red-400 shrink-0" />
-                    광고 성과 데이터, 조회수 등 모든 통계가 삭제됩니다
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="mt-1.5 w-1 h-1 rounded-full bg-red-400 shrink-0" />
-                    삭제된 데이터는 복구할 수 없습니다
-                  </li>
-                </ul>
-              </div>
+            <div className="px-6 pb-6 text-center">
+              <h3 className="text-lg font-bold text-stone-900">정말 탈퇴하시겠습니까?</h3>
+              <p className="text-sm text-stone-500 mt-2 leading-relaxed">
+                탈퇴 시 가게 정보, 광고, 상품, 통계 등<br />
+                모든 데이터가 <strong className="text-red-500">영구 삭제</strong>되며 복구할 수 없습니다.
+              </p>
 
-              <div className="mb-4">
-                <label className="block text-xs font-semibold text-gray-500 mb-1.5">
-                  확인을 위해 <strong className="text-red-500">탈퇴합니다</strong>를 입력해주세요
+              <div className="mt-5">
+                <label className="block text-xs font-semibold text-stone-400 mb-1.5">
+                  <strong className="text-red-500">탈퇴합니다</strong>를 입력해주세요
                 </label>
                 <input
                   value={withdrawConfirmText}
                   onChange={e => setWithdrawConfirmText(e.target.value)}
                   placeholder="탈퇴합니다"
-                  className="w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-red-500 focus:outline-none"
+                  className="w-full border border-stone-200 rounded-lg px-3 py-2.5 text-sm text-center focus:ring-2 focus:ring-red-500 focus:outline-none"
                 />
               </div>
 
-              <div className="flex gap-3">
+              <div className="flex gap-3 mt-5">
                 <button
                   onClick={() => { setShowWithdrawConfirm(false); setWithdrawConfirmText(''); }}
-                  className="flex-1 py-3 rounded-lg border border-gray-200 text-sm font-medium text-gray-500 hover:bg-gray-50 transition"
+                  className="flex-1 py-2.5 rounded-lg border border-stone-200 text-sm font-medium text-stone-500 hover:bg-stone-50 transition"
                 >
                   취소
                 </button>
                 <button
                   onClick={handleWithdraw}
                   disabled={withdrawConfirmText !== '탈퇴합니다'}
-                  className="flex-1 py-3 rounded-lg bg-red-500 hover:bg-red-600 text-white text-sm font-semibold transition disabled:bg-gray-200 disabled:text-gray-400"
+                  className="flex-1 py-2.5 rounded-lg bg-red-500 hover:bg-red-400 text-white text-sm font-semibold transition disabled:bg-stone-200 disabled:text-stone-400"
                 >
                   탈퇴하기
                 </button>

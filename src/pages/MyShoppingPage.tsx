@@ -92,7 +92,7 @@ export const MyShoppingPage: React.FC<Props> = ({ items, setItems, shopName, sho
       <div className="flex items-center justify-between mb-6">
         <div>
           <h2 className="text-xl font-bold pl-1">실속쇼핑 등록</h2>
-          <p className="text-sm text-gray-500 mt-1">입주민 전용 할인 상품을 등록하세요 (유료)</p>
+          <p className="text-sm text-stone-500 mt-1">입주민 전용 할인 상품을 등록하세요 (유료)</p>
         </div>
         <button onClick={openNew} className="bg-[#222] hover:bg-[#333] text-white px-4 py-2.5 rounded-lg text-sm font-semibold flex items-center gap-2 transition">
           <Plus className="w-4 h-4" /> 상품 등록
@@ -102,27 +102,20 @@ export const MyShoppingPage: React.FC<Props> = ({ items, setItems, shopName, sho
       {shops.length === 0 ? (
         <div className="bg-white rounded-lg shadow-sm p-12 text-center">
 
-          <p className="text-gray-500 font-medium">등록된 가게가 없습니다</p>
-          <p className="text-sm text-gray-400 mt-1">상품을 등록하려면 먼저 가게를 등록해주세요</p>
+          <p className="text-stone-500 font-medium">등록된 가게가 없습니다</p>
+          <p className="text-sm text-stone-400 mt-1">상품을 등록하려면 먼저 가게를 등록해주세요</p>
           <button onClick={() => onNavigate('myshop')} className="mt-4 bg-[#222] hover:bg-[#333] text-white px-5 py-2.5 rounded-lg text-sm font-semibold transition">
             가게 등록하기
           </button>
         </div>
       ) : (
       <>
-      <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-5 flex items-start gap-3">
-        <span className="text-xl">🛒</span>
-        <div>
-          <p className="text-sm font-semibold text-amber-800">실속쇼핑은 유료 서비스입니다</p>
-          <p className="text-xs text-amber-600 mt-0.5">상품 등록 시 수수료가 발생합니다. 결제 완료 후 앱에 노출됩니다.</p>
-        </div>
-      </div>
 
       {items.length === 0 ? (
         <div className="bg-white rounded-lg shadow-sm p-12 text-center">
           <p className="text-4xl mb-3">🛒</p>
-          <p className="text-gray-500 font-medium">등록한 상품이 없습니다</p>
-          <p className="text-sm text-gray-400 mt-1">입주민 전용 할인 상품을 등록해보세요</p>
+          <p className="text-stone-500 font-medium">등록한 상품이 없습니다</p>
+          <p className="text-sm text-stone-400 mt-1">입주민 전용 할인 상품을 등록해보세요</p>
           <button onClick={openNew} className="mt-4 bg-[#222] hover:bg-[#333] text-white px-5 py-2.5 rounded-lg text-sm font-semibold transition">
             첫 상품 등록하기
           </button>
@@ -136,53 +129,52 @@ export const MyShoppingPage: React.FC<Props> = ({ items, setItems, shopName, sho
             const aptCount = item.targetApartments?.length || 0;
             return (
               <div key={item.id} className="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow">
-                <div className="flex">
-                  <div className={`w-1.5 shrink-0 ${isPaid ? 'bg-[#ED1C24]' : 'bg-amber-400'}`} />
+                <div>
                   <div className="flex-1">
                     {/* 상단: 상품명 + 판매처 + 액션 */}
                     <div className="flex items-center justify-between px-5 pt-5 pb-3">
                       <div className="min-w-0">
                         <div className="flex items-center gap-2">
-                          <h3 className="text-lg font-bold text-gray-900 truncate">{item.name}</h3>
-                          <span className={`text-xs font-semibold shrink-0 ${isPaid ? 'text-emerald-600' : 'text-red-500'}`}>
+                          <h3 className="text-lg font-bold text-stone-900 truncate">{item.name}</h3>
+                          <span className={`text-xs font-semibold shrink-0 ${isPaid ? 'border border-emerald-400 text-emerald-500' : 'border border-red-400 text-red-500'} px-2 py-0.5 rounded-full`}>
                             {isPaid ? '노출 중' : '결제대기'}
                           </span>
                         </div>
-                        <p className="text-sm text-gray-500 mt-0.5">{item.shopName} · {item.createdAt}</p>
+                        <p className="text-sm text-stone-500 mt-0.5">{item.shopName} · {item.createdAt}</p>
                       </div>
                       <div className="flex items-center gap-1 ml-4 shrink-0">
-                        <button onClick={() => openEdit(item)} className="p-2 rounded-lg hover:bg-blue-100 text-gray-400 hover:text-blue-600 transition"><SquarePen className="w-5 h-5" /></button>
-                        <button onClick={() => remove(item.id)} className="p-2 rounded-lg hover:bg-red-100 text-gray-400 hover:text-red-500 transition"><Trash2 className="w-5 h-5" /></button>
+                        <button onClick={() => openEdit(item)} className="p-2 rounded-lg hover:bg-[#FDF2F2] text-stone-400 hover:text-[#7f2929] transition"><SquarePen className="w-5 h-5" /></button>
+                        <button onClick={() => remove(item.id)} className="p-2 rounded-lg hover:bg-red-100 text-stone-400 hover:text-red-500 transition"><Trash2 className="w-5 h-5" /></button>
                       </div>
                     </div>
                     {/* 중간: 가격 + 조회수 */}
-                    <div className="grid grid-cols-2 border-t border-gray-100 divide-x divide-gray-100">
+                    <div className="grid grid-cols-2 border-t border-stone-100 divide-x divide-stone-100">
                       <div className="px-5 py-3">
-                        <p className="text-sm text-gray-400 font-medium mb-1">가격</p>
+                        <p className="text-sm text-stone-400 font-medium mb-1">가격</p>
                         {item.discountRate > 0 ? (
                           <div>
-                            <span className="text-xs text-gray-400 line-through mr-1.5">{formatMoney(item.price)}원</span>
+                            <span className="text-xs text-stone-400 line-through mr-1.5">{formatMoney(item.price)}원</span>
                             <span className="text-xs font-bold text-red-500 mr-1">{item.discountRate}%</span>
-                            <span className="text-sm font-bold text-gray-900">{formatMoney(discounted)}원</span>
+                            <span className="text-sm font-bold text-stone-900">{formatMoney(discounted)}원</span>
                           </div>
                         ) : (
-                          <p className="text-sm font-bold text-gray-900">{formatMoney(item.price)}원</p>
+                          <p className="text-sm font-bold text-stone-900">{formatMoney(item.price)}원</p>
                         )}
                       </div>
                       <div className="px-5 py-3">
-                        <p className="text-sm text-gray-400 font-medium mb-1">조회수</p>
-                        <p className="text-sm font-bold text-gray-800">{formatMoney(item.viewCount)}회</p>
+                        <p className="text-sm text-stone-400 font-medium mb-1">조회수</p>
+                        <p className="text-sm font-bold text-stone-800">{formatMoney(item.viewCount)}회</p>
                       </div>
                     </div>
                     {/* 하단: 아파트 */}
                     {aptCount > 0 && (
-                      <div className="flex items-center gap-2 px-5 py-3 border-t border-gray-100 bg-gray-50/50">
-                        <Building2 className="w-4 h-4 text-gray-400 shrink-0" />
-                        <span className="text-xs font-semibold text-gray-600 shrink-0">총 {aptCount}개 단지</span>
-                        <span className="text-gray-300">|</span>
+                      <div className="flex items-center gap-2 px-5 py-3 border-t border-stone-100 bg-stone-50/50">
+                        <Building2 className="w-4 h-4 text-stone-400 shrink-0" />
+                        <span className="text-xs font-semibold text-stone-600 shrink-0">총 {aptCount}개 단지</span>
+                        <span className="text-stone-300">|</span>
                         <div className="flex items-center gap-1.5 flex-wrap">
                           {aptNames.map((n, i) => (
-                            <span key={i} className="text-xs px-2 py-0.5 bg-white rounded-md text-gray-500 border border-gray-200">{n}</span>
+                            <span key={i} className="text-xs px-2 py-0.5 bg-white rounded-md text-stone-500 border border-stone-200">{n}</span>
                           ))}
                         </div>
                       </div>
@@ -201,14 +193,14 @@ export const MyShoppingPage: React.FC<Props> = ({ items, setItems, shopName, sho
           <div className="space-y-4">
             <StepIndicator current={1} />
             <div>
-              <label className="block text-xs font-semibold text-gray-500 mb-1.5">상품명 *</label>
-              <input value={editing.name} onChange={e => { setEditing({ ...editing, name: e.target.value }); setErrors({ ...errors, name: '' }); }} placeholder="예: 프리미엄 공기청정기 필터" className={`w-full border rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:outline-none ${errors.name ? 'border-red-300 focus:ring-red-500' : 'border-gray-200 focus:ring-blue-500'}`} />
+              <label className="block text-xs font-semibold text-stone-500 mb-1.5">상품명 *</label>
+              <input value={editing.name} onChange={e => { setEditing({ ...editing, name: e.target.value }); setErrors({ ...errors, name: '' }); }} placeholder="예: 프리미엄 공기청정기 필터" className={`w-full border rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:outline-none ${errors.name ? 'border-red-300 focus:ring-red-500' : 'border-stone-200 focus:ring-[#7f2929]'}`} />
               {errors.name && <p className="text-xs text-red-500 mt-1 flex items-center gap-1"><CircleAlert className="w-3.5 h-3.5" />{errors.name}</p>}
             </div>
             {/* 가게 선택 */}
             {shops.length > 0 ? (
               <div>
-                <label className="block text-xs font-semibold text-gray-500 mb-1.5">판매처 *</label>
+                <label className="block text-xs font-semibold text-stone-500 mb-1.5">판매처 *</label>
                 <select
                   value={selectedShopId}
                   onChange={e => {
@@ -222,7 +214,7 @@ export const MyShoppingPage: React.FC<Props> = ({ items, setItems, shopName, sho
                       setEditing({ ...editing, shopName: '' });
                     }
                   }}
-                  className={`w-full border rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:outline-none ${errors.shopName ? 'border-red-300 focus:ring-red-500' : 'border-gray-200 focus:ring-blue-500'}`}
+                  className={`w-full border rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:outline-none ${errors.shopName ? 'border-red-300 focus:ring-red-500' : 'border-stone-200 focus:ring-[#7f2929]'}`}
                 >
                   {shops.length > 1 && <option value="">선택</option>}
                   {shops.map(s => (
@@ -230,11 +222,11 @@ export const MyShoppingPage: React.FC<Props> = ({ items, setItems, shopName, sho
                   ))}
                 </select>
                 {selectedShop && (
-                  <div className="flex items-center gap-2 mt-2 bg-blue-50 rounded-lg px-3 py-2">
-                    <div className="w-7 h-7 rounded-lg bg-blue-100 flex items-center justify-center text-xs font-bold text-blue-600">{selectedShop.name.charAt(0)}</div>
+                  <div className="flex items-center gap-2 mt-2 bg-[#FDF2F2] rounded-lg px-3 py-2">
+                    <div className="w-7 h-7 rounded-lg bg-[#FDF2F2] flex items-center justify-center text-xs font-bold text-[#7f2929]">{selectedShop.name.charAt(0)}</div>
                     <div>
-                      <p className="text-xs font-semibold text-blue-800">{selectedShop.name}</p>
-                      <p className="text-xs text-blue-500">{selectedShop.tagline}</p>
+                      <p className="text-xs font-semibold text-[#5C1A1A]">{selectedShop.name}</p>
+                      <p className="text-xs text-[#7f2929]">{selectedShop.tagline}</p>
                     </div>
                   </div>
                 )}
@@ -242,25 +234,25 @@ export const MyShoppingPage: React.FC<Props> = ({ items, setItems, shopName, sho
               </div>
             ) : (
               <div>
-                <label className="block text-xs font-semibold text-gray-500 mb-1.5">판매처 *</label>
-                <input value={editing.shopName} onChange={e => { setEditing({ ...editing, shopName: e.target.value }); setErrors({ ...errors, shopName: '' }); }} placeholder="내 상호명" className={`w-full border rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:outline-none ${errors.shopName ? 'border-red-300 focus:ring-red-500' : 'border-gray-200 focus:ring-blue-500'}`} />
+                <label className="block text-xs font-semibold text-stone-500 mb-1.5">판매처 *</label>
+                <input value={editing.shopName} onChange={e => { setEditing({ ...editing, shopName: e.target.value }); setErrors({ ...errors, shopName: '' }); }} placeholder="내 상호명" className={`w-full border rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:outline-none ${errors.shopName ? 'border-red-300 focus:ring-red-500' : 'border-stone-200 focus:ring-[#7f2929]'}`} />
                 {errors.shopName && <p className="text-xs text-red-500 mt-1 flex items-center gap-1"><CircleAlert className="w-3.5 h-3.5" />{errors.shopName}</p>}
               </div>
             )}
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="block text-xs font-semibold text-gray-500 mb-1.5">정가 (원) *</label>
-                <input type="number" value={String(editing.price)} onChange={e => { setEditing({ ...editing, price: Number(e.target.value) || 0 }); setErrors({ ...errors, price: '' }); }} className={`w-full border rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:outline-none ${errors.price ? 'border-red-300 focus:ring-red-500' : 'border-gray-200 focus:ring-blue-500'}`} />
+                <label className="block text-xs font-semibold text-stone-500 mb-1.5">정가 (원) *</label>
+                <input type="number" value={String(editing.price)} onChange={e => { setEditing({ ...editing, price: Number(e.target.value) || 0 }); setErrors({ ...errors, price: '' }); }} className={`w-full border rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:outline-none ${errors.price ? 'border-red-300 focus:ring-red-500' : 'border-stone-200 focus:ring-[#7f2929]'}`} />
                 {errors.price && <p className="text-xs text-red-500 mt-1 flex items-center gap-1"><CircleAlert className="w-3.5 h-3.5" />{errors.price}</p>}
               </div>
               <div>
-                <label className="block text-xs font-semibold text-gray-500 mb-1.5">할인율 (%)</label>
-                <input type="number" value={String(editing.discountRate)} onChange={e => { setEditing({ ...editing, discountRate: Number(e.target.value) || 0 }); setErrors({ ...errors, discountRate: '' }); }} className={`w-full border rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:outline-none ${errors.discountRate ? 'border-red-300 focus:ring-red-500' : 'border-gray-200 focus:ring-blue-500'}`} />
+                <label className="block text-xs font-semibold text-stone-500 mb-1.5">할인율 (%)</label>
+                <input type="number" value={String(editing.discountRate)} onChange={e => { setEditing({ ...editing, discountRate: Number(e.target.value) || 0 }); setErrors({ ...errors, discountRate: '' }); }} className={`w-full border rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:outline-none ${errors.discountRate ? 'border-red-300 focus:ring-red-500' : 'border-stone-200 focus:ring-[#7f2929]'}`} />
                 {errors.discountRate && <p className="text-xs text-red-500 mt-1 flex items-center gap-1"><CircleAlert className="w-3.5 h-3.5" />{errors.discountRate}</p>}
               </div>
             </div>
             {editing.price > 0 && (
-              <div className="bg-blue-50 rounded-lg p-3 text-sm text-blue-700 font-medium">
+              <div className="bg-[#FDF2F2] rounded-lg p-3 text-sm text-[#6B2222] font-medium">
                 할인가: <strong>{formatMoney(dp)}원</strong>
                 {saved > 0 && ` (${formatMoney(saved)}원 절약)`}
               </div>
@@ -268,7 +260,7 @@ export const MyShoppingPage: React.FC<Props> = ({ items, setItems, shopName, sho
             <ImageUpload images={image} onChange={setImage} max={1} label="상품 이미지" />
 
             <div className="flex gap-2 pt-2">
-              <button onClick={close} className="flex-1 py-2.5 rounded-lg border border-gray-200 text-sm font-medium text-gray-500 hover:bg-gray-50 transition">취소</button>
+              <button onClick={close} className="flex-1 py-2.5 rounded-lg border border-stone-200 text-sm font-medium text-stone-500 hover:bg-stone-50 transition">취소</button>
               <button onClick={editing.id ? save : goApartments} className="flex-1 py-2.5 rounded-lg bg-[#222] hover:bg-[#333] text-white text-sm font-semibold transition">{editing.id ? '저장' : '다음: 아파트 선택'}</button>
             </div>
           </div>
@@ -279,13 +271,12 @@ export const MyShoppingPage: React.FC<Props> = ({ items, setItems, shopName, sho
           <div className="space-y-4">
             <StepIndicator current={2} />
             <ApartmentSelector
-              shopLat={shopLat}
-              shopLng={shopLng}
               selected={editing.targetApartments}
               onChange={ids => setEditing({ ...editing, targetApartments: ids })}
+              allowedIds={selectedShop?.targetApartments}
             />
             <div className="flex gap-2 pt-2">
-              <button onClick={() => setStep('form')} className="flex-1 py-2.5 rounded-lg border border-gray-200 text-sm font-medium text-gray-500 hover:bg-gray-50 transition">이전</button>
+              <button onClick={() => setStep('form')} className="flex-1 py-2.5 rounded-lg border border-stone-200 text-sm font-medium text-stone-500 hover:bg-stone-50 transition">이전</button>
               <button onClick={goConfirm} className="flex-1 py-2.5 rounded-lg bg-[#222] hover:bg-[#333] text-white text-sm font-semibold transition">다음: 확인</button>
             </div>
           </div>
@@ -295,8 +286,8 @@ export const MyShoppingPage: React.FC<Props> = ({ items, setItems, shopName, sho
         {editing && step === 'confirm' && (
           <div className="space-y-4">
             <StepIndicator current={3} />
-            <div className="bg-blue-50 rounded-lg p-5">
-              <h4 className="text-sm font-bold text-blue-800 mb-3">등록 내용 확인</h4>
+            <div className="bg-[#FDF2F2] rounded-lg p-5">
+              <h4 className="text-sm font-bold text-[#5C1A1A] mb-3">등록 내용 확인</h4>
               <div className="space-y-2 text-sm">
                 <ConfirmRow label="상품명" value={editing.name} />
                 <ConfirmRow label="판매처" value={editing.shopName} />
@@ -304,7 +295,7 @@ export const MyShoppingPage: React.FC<Props> = ({ items, setItems, shopName, sho
                 <ConfirmRow label="대상 아파트" value={`${editing.targetApartments.length}개 단지`} />
                 <div className="flex flex-wrap gap-1 ml-20">
                   {getAptNames(editing.targetApartments).map((n, i) => (
-                    <span key={i} className="text-xs px-1.5 py-0.5 bg-white rounded text-blue-700">{n}</span>
+                    <span key={i} className="text-xs px-1.5 py-0.5 bg-white rounded text-[#6B2222]">{n}</span>
                   ))}
                 </div>
               </div>
@@ -318,7 +309,7 @@ export const MyShoppingPage: React.FC<Props> = ({ items, setItems, shopName, sho
               </p>
             </div>
             <div className="flex gap-2 pt-2">
-              <button onClick={() => setStep('apartments')} className="flex-1 py-2.5 rounded-lg border border-gray-200 text-sm font-medium text-gray-500 hover:bg-gray-50 transition">이전</button>
+              <button onClick={() => setStep('apartments')} className="flex-1 py-2.5 rounded-lg border border-stone-200 text-sm font-medium text-stone-500 hover:bg-stone-50 transition">이전</button>
               <button onClick={save} className="flex-1 py-2.5 rounded-lg bg-[#222] hover:bg-[#333] text-white text-sm font-semibold transition">등록하기</button>
             </div>
           </div>
@@ -338,12 +329,12 @@ const StepIndicator: React.FC<{ current: number }> = ({ current }) => (
       const done = step < current;
       return (
         <React.Fragment key={step}>
-          {i > 0 && <div className={`w-8 h-0.5 ${done ? 'bg-[#ED1C24]' : 'bg-gray-200'}`} />}
+          {i > 0 && <div className={`w-8 h-0.5 ${done ? 'bg-[#ED1C24]' : 'bg-stone-200'}`} />}
           <div className="flex items-center gap-1.5">
-            <div className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ${active ? 'bg-[#ED1C24] text-white' : done ? 'bg-[#ED1C24] text-white' : 'bg-gray-200 text-gray-400'}`}>
+            <div className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ${active ? 'bg-[#ED1C24] text-white' : done ? 'bg-[#ED1C24] text-white' : 'bg-stone-200 text-stone-400'}`}>
               {done ? '✓' : step}
             </div>
-            <span className={`text-xs font-medium ${active ? 'text-[#ED1C24]' : 'text-gray-400'}`}>{label}</span>
+            <span className={`text-xs font-medium ${active ? 'text-[#ED1C24]' : 'text-stone-400'}`}>{label}</span>
           </div>
         </React.Fragment>
       );
@@ -353,7 +344,7 @@ const StepIndicator: React.FC<{ current: number }> = ({ current }) => (
 
 const ConfirmRow: React.FC<{ label: string; value: string }> = ({ label, value }) => (
   <div className="flex">
-    <span className="text-gray-500 w-20 shrink-0">{label}</span>
-    <span className="text-gray-800 font-medium">{value}</span>
+    <span className="text-stone-500 w-20 shrink-0">{label}</span>
+    <span className="text-stone-800 font-medium">{value}</span>
   </div>
 );

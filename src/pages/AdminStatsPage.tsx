@@ -96,30 +96,30 @@ export const AdminStatsPage: React.FC<Props> = ({ shops, ads, shopping }) => {
     <div>
       <div className="mb-6">
         <h2 className="text-xl font-bold">전체 통계</h2>
-        <p className="text-sm text-gray-500 mt-1">
+        <p className="text-sm text-stone-500 mt-1">
           {hasFilter ? '필터 조건에 맞는 통계입니다' : '우리동네 서비스 전체 현황을 확인하세요'}
         </p>
       </div>
 
       {/* 필터 영역 */}
-      <div className="bg-white rounded-lg border border-gray-200 p-4 mb-6">
+      <div className="bg-white rounded-lg border border-stone-200 p-4 mb-6">
         <div className="flex flex-wrap items-center gap-3">
-          <MapPin className="w-5 h-5 text-gray-400 shrink-0" />
+          <MapPin className="w-5 h-5 text-stone-400 shrink-0" />
           <select
             value={selectedZone}
             onChange={e => setSelectedZone(e.target.value)}
-            className="border border-gray-200 rounded-lg px-3 py-2 text-sm font-semibold text-gray-800 focus:ring-2 focus:ring-amber-500 focus:outline-none bg-white"
+            className="border border-stone-200 rounded-lg px-3 py-2 text-sm font-semibold text-stone-800 focus:ring-2 focus:ring-amber-500 focus:outline-none bg-white"
           >
             {ZONES.map(z => (
               <option key={z.id} value={z.id}>{z.name}</option>
             ))}
           </select>
 
-          <Building2 className="w-5 h-5 text-gray-400 shrink-0 ml-2" />
+          <Building2 className="w-5 h-5 text-stone-400 shrink-0 ml-2" />
           <select
             value={selectedApt}
             onChange={e => setSelectedApt(e.target.value)}
-            className="border border-gray-200 rounded-lg px-3 py-2 text-sm font-semibold text-gray-800 focus:ring-2 focus:ring-amber-500 focus:outline-none bg-white"
+            className="border border-stone-200 rounded-lg px-3 py-2 text-sm font-semibold text-stone-800 focus:ring-2 focus:ring-amber-500 focus:outline-none bg-white"
           >
             <option value="all">전체 아파트</option>
             {apartments.map(apt => (
@@ -127,11 +127,11 @@ export const AdminStatsPage: React.FC<Props> = ({ shops, ads, shopping }) => {
             ))}
           </select>
 
-          <Tag className="w-5 h-5 text-gray-400 shrink-0 ml-2" />
+          <Tag className="w-5 h-5 text-stone-400 shrink-0 ml-2" />
           <select
             value={selectedCategory}
             onChange={e => setSelectedCategory(e.target.value)}
-            className="border border-gray-200 rounded-lg px-3 py-2 text-sm font-semibold text-gray-800 focus:ring-2 focus:ring-amber-500 focus:outline-none bg-white"
+            className="border border-stone-200 rounded-lg px-3 py-2 text-sm font-semibold text-stone-800 focus:ring-2 focus:ring-amber-500 focus:outline-none bg-white"
           >
             <option value="all">전체 업종</option>
             {CATEGORIES.map(cat => (
@@ -140,7 +140,7 @@ export const AdminStatsPage: React.FC<Props> = ({ shops, ads, shopping }) => {
           </select>
 
           {hasFilter && (
-            <button onClick={resetFilters} className="text-xs text-gray-400 hover:text-gray-600 font-medium transition ml-auto">
+            <button onClick={resetFilters} className="text-xs text-stone-400 hover:text-stone-600 font-medium transition ml-auto">
               필터 초기화
             </button>
           )}
@@ -149,33 +149,33 @@ export const AdminStatsPage: React.FC<Props> = ({ shops, ads, shopping }) => {
 
       {/* Summary */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
-        <StatCard icon={<Store className="w-6 h-6 text-emerald-500" />} label="등록 이웃상가" value={`${filteredShops.length}개`} />
-        <StatCard icon={<Megaphone className="w-6 h-6 text-blue-500" />} label="알짜광고" value={`${filteredAds.length}개 (진행중 ${activeAds})`} />
-        <StatCard icon={<ShoppingBag className="w-6 h-6 text-purple-500" />} label="실속쇼핑" value={`${filteredShopping.length}개`} />
-        <StatCard icon={<Eye className="w-6 h-6 text-cyan-500" />} label="총 광고 조회수" value={`${formatMoney(totalViews)}회`} />
-        <StatCard icon={<DollarSign className="w-6 h-6 text-amber-500" />} label="광고 매출" value={`${formatMoney(totalAdRevenue)}원`} />
-        <StatCard icon={<CircleCheck className="w-6 h-6 text-pink-500" />} label="쇼핑 매출" value={`${formatMoney(totalShoppingRevenue)}원`} />
+        <StatCard icon={<Store className="w-6 h-6 text-[#7f2929]" />} label="등록 이웃상가" value={`${filteredShops.length}개`} />
+        <StatCard icon={<Megaphone className="w-6 h-6 text-[#B85C38]" />} label="알짜광고" value={`${filteredAds.length}개 (진행중 ${activeAds})`} />
+        <StatCard icon={<ShoppingBag className="w-6 h-6 text-[#D4956A]" />} label="실속쇼핑" value={`${filteredShopping.length}개`} />
+        <StatCard icon={<Eye className="w-6 h-6 text-[#7f2929]" />} label="총 광고 조회수" value={`${formatMoney(totalViews)}회`} />
+        <StatCard icon={<DollarSign className="w-6 h-6 text-[#B85C38]" />} label="광고 매출" value={`${formatMoney(totalAdRevenue)}원`} />
+        <StatCard icon={<CircleCheck className="w-6 h-6 text-[#D4956A]" />} label="쇼핑 매출" value={`${formatMoney(totalShoppingRevenue)}원`} />
       </div>
 
       {/* 지역별 · 업종별 요약 */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
         {/* 지역별 상가 분포 */}
         <div className="bg-white rounded-lg shadow-sm p-5">
-          <h3 className="text-base font-bold text-gray-800 mb-4">지역별 상가 분포</h3>
+          <h3 className="text-base font-bold text-stone-800 mb-4">지역별 상가 분포</h3>
           <div className="space-y-3">
             {zoneCounts.map(z => {
               const maxCount = Math.max(...zoneCounts.map(zz => zz.count), 1);
               const pct = Math.round((z.count / maxCount) * 100);
               return (
                 <div key={z.name} className="flex items-center gap-3">
-                  <span className="w-14 text-sm font-bold text-gray-700 shrink-0">{z.name}</span>
-                  <div className="flex-1 h-2.5 bg-gray-100 rounded-full overflow-hidden">
+                  <span className="w-14 text-sm font-bold text-stone-700 shrink-0">{z.name}</span>
+                  <div className="flex-1 h-2.5 bg-stone-100 rounded-full overflow-hidden">
                     <div
-                      className="h-full bg-blue-500 rounded-full"
+                      className="h-full bg-[#7f2929] rounded-full"
                       style={{ width: `${Math.max(pct, 10)}%` }}
                     />
                   </div>
-                  <span className="text-sm font-bold text-gray-600 w-8 text-right">{z.count}</span>
+                  <span className="text-sm font-bold text-stone-600 w-8 text-right">{z.count}</span>
                 </div>
               );
             })}
@@ -184,9 +184,9 @@ export const AdminStatsPage: React.FC<Props> = ({ shops, ads, shopping }) => {
 
         {/* 업종별 상가 분포 */}
         <div className="bg-white rounded-lg shadow-sm p-5">
-          <h3 className="text-base font-bold text-gray-800 mb-4">업종별 상가 분포</h3>
+          <h3 className="text-base font-bold text-stone-800 mb-4">업종별 상가 분포</h3>
           {categoryCounts.length === 0 ? (
-            <p className="text-sm text-gray-400 text-center py-6">등록된 상가가 없습니다</p>
+            <p className="text-sm text-stone-400 text-center py-6">등록된 상가가 없습니다</p>
           ) : (
             <div className="space-y-3">
               {categoryCounts.map(([cat, count]) => {
@@ -194,14 +194,14 @@ export const AdminStatsPage: React.FC<Props> = ({ shops, ads, shopping }) => {
                 const pct = Math.round((count / maxCount) * 100);
                 return (
                   <div key={cat} className="flex items-center gap-3">
-                    <span className="w-14 text-sm font-bold text-gray-700 shrink-0">{cat}</span>
-                    <div className="flex-1 h-2.5 bg-gray-100 rounded-full overflow-hidden">
+                    <span className="w-14 text-sm font-bold text-stone-700 shrink-0">{cat}</span>
+                    <div className="flex-1 h-2.5 bg-stone-100 rounded-full overflow-hidden">
                       <div
-                        className="h-full bg-emerald-500 rounded-full"
+                        className="h-full bg-[#7f2929] rounded-full"
                         style={{ width: `${Math.max(pct, 10)}%` }}
                       />
                     </div>
-                    <span className="text-sm font-bold text-gray-600 w-8 text-right">{count}</span>
+                    <span className="text-sm font-bold text-stone-600 w-8 text-right">{count}</span>
                   </div>
                 );
               })}
@@ -213,29 +213,29 @@ export const AdminStatsPage: React.FC<Props> = ({ shops, ads, shopping }) => {
       {/* 결제 현황 */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
         <div className="bg-white rounded-lg shadow-sm p-5">
-          <h3 className="text-base font-bold text-gray-800 mb-4">알짜광고 결제 현황</h3>
+          <h3 className="text-base font-bold text-stone-800 mb-4">알짜광고 결제 현황</h3>
           {filteredAds.length === 0 ? (
-            <p className="text-sm text-gray-400 text-center py-6">해당 조건의 광고가 없습니다</p>
+            <p className="text-sm text-stone-400 text-center py-6">해당 조건의 광고가 없습니다</p>
           ) : (
             <>
               <div className="flex items-center gap-4 mb-4">
-                <div className="flex-1 bg-gray-100 rounded-full h-2.5 overflow-hidden">
-                  <div className="h-full bg-emerald-500 rounded-full" style={{ width: `${(paidAds / filteredAds.length) * 100}%` }} />
+                <div className="flex-1 bg-stone-100 rounded-full h-2.5 overflow-hidden">
+                  <div className="h-full bg-[#B85C38] rounded-full" style={{ width: `${(paidAds / filteredAds.length) * 100}%` }} />
                 </div>
-                <span className="text-base font-bold text-gray-800">{paidAds}/{filteredAds.length}</span>
+                <span className="text-base font-bold text-stone-800">{paidAds}/{filteredAds.length}</span>
               </div>
               <div className="space-y-2">
                 {filteredAds.map(ad => {
                   const st = getAdStatus(ad);
                   return (
-                    <div key={ad.id} className="flex items-center justify-between py-2 border-b border-gray-100 last:border-0">
+                    <div key={ad.id} className="flex items-center justify-between py-2 border-b border-stone-100 last:border-0">
                       <div className="flex items-center gap-2">
                         <span className={`text-xs font-semibold ${st.cls}`}>{st.label}</span>
                         <span className="text-sm font-medium truncate max-w-[180px]">{ad.title}</span>
                       </div>
                       <div className="flex items-center gap-2">
-                        <span className="text-xs text-gray-500">{formatMoney(ad.amount)}원</span>
-                        <span className={`text-xs font-medium ${ad.paymentStatus === 'paid' ? 'text-emerald-600' : 'text-red-500'}`}>
+                        <span className="text-xs text-stone-500">{formatMoney(ad.amount)}원</span>
+                        <span className={`text-xs font-medium ${ad.paymentStatus === 'paid' ? 'text-emerald-500' : 'text-red-500'}`}>
                           {ad.paymentStatus === 'paid' ? '결제완료' : '미결제'}
                         </span>
                       </div>
@@ -248,27 +248,27 @@ export const AdminStatsPage: React.FC<Props> = ({ shops, ads, shopping }) => {
         </div>
 
         <div className="bg-white rounded-lg shadow-sm p-5">
-          <h3 className="text-base font-bold text-gray-800 mb-4">실속쇼핑 결제 현황</h3>
+          <h3 className="text-base font-bold text-stone-800 mb-4">실속쇼핑 결제 현황</h3>
           {filteredShopping.length === 0 ? (
-            <p className="text-sm text-gray-400 text-center py-6">해당 조건의 상품이 없습니다</p>
+            <p className="text-sm text-stone-400 text-center py-6">해당 조건의 상품이 없습니다</p>
           ) : (
             <>
               <div className="flex items-center gap-4 mb-4">
-                <div className="flex-1 bg-gray-100 rounded-full h-2.5 overflow-hidden">
-                  <div className="h-full bg-purple-500 rounded-full" style={{ width: `${(paidItems / filteredShopping.length) * 100}%` }} />
+                <div className="flex-1 bg-stone-100 rounded-full h-2.5 overflow-hidden">
+                  <div className="h-full bg-[#D4956A] rounded-full" style={{ width: `${(paidItems / filteredShopping.length) * 100}%` }} />
                 </div>
-                <span className="text-base font-bold text-gray-800">{paidItems}/{filteredShopping.length}</span>
+                <span className="text-base font-bold text-stone-800">{paidItems}/{filteredShopping.length}</span>
               </div>
               <div className="space-y-2">
                 {filteredShopping.map(item => (
-                  <div key={item.id} className="flex items-center justify-between py-2 border-b border-gray-100 last:border-0">
+                  <div key={item.id} className="flex items-center justify-between py-2 border-b border-stone-100 last:border-0">
                     <div>
                       <span className="text-sm font-medium">{item.name}</span>
-                      <span className="text-xs text-gray-400 ml-2">{item.shopName}</span>
+                      <span className="text-xs text-stone-400 ml-2">{item.shopName}</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <span className="text-xs text-gray-500">{formatMoney(item.amount)}원</span>
-                      <span className={`text-xs font-medium ${item.paymentStatus === 'paid' ? 'text-emerald-600' : 'text-red-500'}`}>
+                      <span className="text-xs text-stone-500">{formatMoney(item.amount)}원</span>
+                      <span className={`text-xs font-medium ${item.paymentStatus === 'paid' ? 'text-emerald-500' : 'text-red-500'}`}>
                         {item.paymentStatus === 'paid' ? '결제완료' : '미결제'}
                       </span>
                     </div>
@@ -282,9 +282,9 @@ export const AdminStatsPage: React.FC<Props> = ({ shops, ads, shopping }) => {
 
       {/* 광고 조회수 순위 */}
       <div className="bg-white rounded-lg shadow-sm p-5">
-        <h3 className="text-base font-bold text-gray-800 mb-4">광고 조회수 순위</h3>
+        <h3 className="text-base font-bold text-stone-800 mb-4">광고 조회수 순위</h3>
         {filteredAds.length === 0 ? (
-          <p className="text-sm text-gray-400 text-center py-6">해당 조건의 광고가 없습니다</p>
+          <p className="text-sm text-stone-400 text-center py-6">해당 조건의 광고가 없습니다</p>
         ) : (
           <div className="space-y-3">
             {[...filteredAds].sort((a, b) => (b.viewCount || 0) - (a.viewCount || 0)).map((ad, i) => {
@@ -292,17 +292,17 @@ export const AdminStatsPage: React.FC<Props> = ({ shops, ads, shopping }) => {
               const pct = Math.round(((ad.viewCount || 0) / maxViews) * 100);
               return (
                 <div key={ad.id} className="flex items-center gap-4">
-                  <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ${i < 3 ? 'bg-amber-100 text-amber-700' : 'bg-gray-100 text-gray-500'}`}>{i + 1}</span>
+                  <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ${i < 3 ? 'bg-amber-100 text-amber-700' : 'bg-stone-100 text-stone-500'}`}>{i + 1}</span>
                   <div className="w-44 shrink-0">
                     <p className="text-sm font-semibold truncate">{ad.title}</p>
-                    <p className="text-xs text-gray-400">{ad.advertiser}</p>
+                    <p className="text-xs text-stone-400">{ad.advertiser}</p>
                   </div>
                   <div className="flex-1">
-                    <div className="w-full h-2.5 bg-gray-100 rounded-full overflow-hidden">
-                      <div className="h-full bg-blue-500 rounded-full transition-all" style={{ width: `${pct}%` }} />
+                    <div className="w-full h-2.5 bg-stone-100 rounded-full overflow-hidden">
+                      <div className="h-full bg-[#7f2929] rounded-full transition-all" style={{ width: `${pct}%` }} />
                     </div>
                   </div>
-                  <span className="text-base font-bold text-gray-800 w-16 text-right">{formatMoney(ad.viewCount)}회</span>
+                  <span className="text-base font-bold text-stone-800 w-16 text-right">{formatMoney(ad.viewCount)}회</span>
                 </div>
               );
             })}
@@ -318,7 +318,7 @@ const StatCard: React.FC<{ icon: React.ReactNode; label: string; value: string }
     <div className="flex items-center gap-3">
       {icon}
       <div>
-        <p className="text-xs text-gray-400 font-medium">{label}</p>
+        <p className="text-xs text-stone-400 font-medium">{label}</p>
         <p className="text-lg font-bold mt-0.5">{value}</p>
       </div>
     </div>

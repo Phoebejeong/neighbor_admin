@@ -46,10 +46,10 @@ export const ImageUpload: React.FC<Props> = ({ images, onChange, max = 5, label 
 
   return (
     <div>
-      <label className="block text-xs font-semibold text-gray-500 mb-1.5">{label} (최대 {max}장)</label>
+      <label className="block text-xs font-semibold text-stone-500 mb-1.5">{label} (최대 {max}장)</label>
       <div className="flex flex-wrap gap-2">
         {images.map((src, i) => (
-          <div key={i} className="relative w-20 h-20 rounded-lg overflow-hidden border border-gray-200 group">
+          <div key={i} className="relative w-20 h-20 rounded-lg overflow-hidden border border-stone-200 group">
             <img src={src} alt="" className="w-full h-full object-cover" />
             <button
               onClick={() => remove(i)}
@@ -62,7 +62,7 @@ export const ImageUpload: React.FC<Props> = ({ images, onChange, max = 5, label 
         {images.length < max && (
           <button
             onClick={() => ref.current?.click()}
-            className="w-20 h-20 rounded-lg border-2 border-dashed border-gray-300 hover:border-blue-400 flex flex-col items-center justify-center gap-1 transition text-gray-400 hover:text-blue-500"
+            className="w-20 h-20 rounded-lg border-2 border-dashed border-stone-300 hover:border-[#A05050] flex flex-col items-center justify-center gap-1 transition text-stone-400 hover:text-[#7f2929]"
           >
             <ImagePlus className="w-5 h-5" />
             <span className="text-xs font-medium">추가</span>
