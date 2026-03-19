@@ -1,13 +1,11 @@
 import { LocalAd, AdStatus, Apartment } from './types';
 
 export function getAdStatus(ad: LocalAd): AdStatus {
-  if (!ad.startDate || !ad.endDate) return { label: '기간미정', cls: 'bg-gray-100 text-gray-500' };
-  const now = new Date();
-  const s = new Date(ad.startDate);
-  const e = new Date(ad.endDate);
-  if (now < s) return { label: '예정', cls: 'bg-amber-100 text-amber-700' };
-  if (now > e) return { label: '종료', cls: 'bg-red-100 text-red-600' };
-  return { label: '진행중', cls: 'bg-emerald-100 text-emerald-700' };
+  if (!ad.startDate || !ad.endDate) return { label: '기간미정', cls: 'border border-stone-300 text-stone-500 px-2 py-0.5 rounded-full' };
+  const today = new Date().toISOString().slice(0, 10);
+  if (today < ad.startDate) return { label: '예정', cls: 'border border-amber-400 text-amber-600 px-2 py-0.5 rounded-full' };
+  if (today > ad.endDate) return { label: '종료', cls: 'border border-red-400 text-red-500 px-2 py-0.5 rounded-full' };
+  return { label: '진행중', cls: 'border border-emerald-400 text-emerald-500 px-2 py-0.5 rounded-full' };
 }
 
 export function formatMoney(n: number): string {

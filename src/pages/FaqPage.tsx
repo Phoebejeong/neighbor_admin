@@ -6,46 +6,46 @@ export const FaqPage: React.FC = () => {
     <div>
       <div className="mb-6">
         <h2 className="text-xl font-bold">고객센터</h2>
-        <p className="text-sm text-gray-500 mt-1">궁금한 점이 있으시면 아래를 확인해주세요</p>
+        <p className="text-sm text-stone-500 mt-1">궁금한 점이 있으시면 아래를 확인해주세요</p>
       </div>
 
       {/* Contact Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
         <div className="bg-white rounded-lg p-5 flex items-center gap-4 shadow-sm">
           <div className="shrink-0">
-            <Phone className="w-6 h-6 text-blue-500" />
+            <Phone className="w-6 h-6 text-[#7f2929]" />
           </div>
           <div>
-            <p className="text-xs text-gray-400 font-medium">전화 문의</p>
-            <p className="text-sm font-bold text-gray-900 mt-0.5">031-000-0000</p>
+            <p className="text-xs text-stone-400 font-medium">전화 문의</p>
+            <p className="text-sm font-bold text-stone-900 mt-0.5">031-000-0000</p>
           </div>
         </div>
         <div className="bg-white rounded-lg p-5 flex items-center gap-4 shadow-sm">
           <div className="shrink-0">
-            <Mail className="w-6 h-6 text-emerald-500" />
+            <Mail className="w-6 h-6 text-[#7f2929]" />
           </div>
           <div>
-            <p className="text-xs text-gray-400 font-medium">이메일 문의</p>
-            <p className="text-sm font-bold text-gray-900 mt-0.5">admin@eyevacs.com</p>
+            <p className="text-xs text-stone-400 font-medium">이메일 문의</p>
+            <p className="text-sm font-bold text-stone-900 mt-0.5">admin@eyevacs.com</p>
           </div>
         </div>
         <div className="bg-white rounded-lg p-5 flex items-center gap-4 shadow-sm">
           <div className="shrink-0">
-            <Clock className="w-6 h-6 text-amber-500" />
+            <Clock className="w-6 h-6 text-[#7f2929]" />
           </div>
           <div>
-            <p className="text-xs text-gray-400 font-medium">운영 시간</p>
-            <p className="text-sm font-bold text-gray-900 mt-0.5">평일 09:00 ~ 18:00</p>
+            <p className="text-xs text-stone-400 font-medium">운영 시간</p>
+            <p className="text-sm font-bold text-stone-900 mt-0.5">평일 09:00 ~ 18:00</p>
           </div>
         </div>
       </div>
 
       {/* FAQ */}
       <div className="bg-white rounded-lg overflow-hidden shadow-sm">
-        <div className="px-5 py-4 border-b border-gray-100">
-          <h3 className="text-base font-bold text-gray-800">자주 묻는 질문</h3>
+        <div className="px-5 py-4 border-b border-stone-100">
+          <h3 className="text-base font-bold text-stone-800">자주 묻는 질문</h3>
         </div>
-        <div className="divide-y divide-gray-100">
+        <div className="divide-y divide-stone-100">
           <FaqItem q="이웃상가 등록은 정말 무료인가요?" a="네, 이웃상가 등록은 완전 무료입니다. 상호명, 연락처, 주소, 홍보문구 등 기본 정보를 등록하시면 입주민 앱에 노출됩니다." />
           <FaqItem q="알짜광고와 이웃상가의 차이점이 뭔가요?" a="이웃상가는 상시 노출되는 기본 정보이고, 알짜광고는 기간 한정 이벤트/프로모션을 홍보하는 유료 서비스입니다. 알짜광고는 이미지와 상세 설명을 포함할 수 있고, 조회수를 확인할 수 있습니다." />
           <FaqItem q="광고비는 어떻게 결제하나요?" a="광고 신청 후 관리사무소에서 결제 안내 문자를 발송합니다. 계좌이체 또는 카드 결제가 가능합니다. 결제가 완료되면 자동으로 앱에 노출됩니다." />
@@ -64,13 +64,13 @@ const FaqItem: React.FC<{ q: string; a: string }> = ({ q, a }) => {
   const [open, setOpen] = useState(false);
   return (
     <div>
-      <button onClick={() => setOpen(!open)} className="w-full flex items-center justify-between px-5 py-4 text-left hover:bg-gray-50 transition">
-        <span className="text-sm font-bold text-gray-800 pr-4">Q. {q}</span>
-        <ChevronDown className={`w-5 h-5 text-gray-400 shrink-0 transition-transform ${open ? 'rotate-180' : ''}`} />
+      <button onClick={() => setOpen(!open)} className="w-full flex items-center justify-between px-5 py-4 text-left hover:bg-stone-50 transition">
+        <span className="text-sm font-bold text-stone-800 pr-4">Q. {q}</span>
+        <ChevronDown className={`w-5 h-5 text-stone-400 shrink-0 transition-transform ${open ? 'rotate-180' : ''}`} />
       </button>
       {open && (
         <div className="px-5 pb-4 -mt-1">
-          <p className="text-sm text-gray-500 leading-relaxed pl-4 border-l-2 border-gray-200">A. {a}</p>
+          <p className="text-sm text-stone-500 leading-relaxed pl-4 border-l-2 border-stone-200">A. {a}</p>
         </div>
       )}
     </div>

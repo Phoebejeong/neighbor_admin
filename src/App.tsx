@@ -107,7 +107,7 @@ function AppInner() {
   if (isAdmin) {
     return (
       <ToastProvider>
-        <div className="min-h-screen bg-gray-50 text-gray-900 flex flex-col">
+        <div className="min-h-screen bg-stone-50 text-stone-900 flex flex-col">
           <TopNav
             current={currentKey}
             shopName="관리자"
@@ -143,7 +143,7 @@ function AppInner() {
   if (isFirstLogin && myShops.length === 0) {
     return (
       <ToastProvider>
-        <div className="min-h-screen bg-gray-50 text-gray-900 flex flex-col">
+        <div className="min-h-screen bg-stone-50 text-stone-900 flex flex-col">
           <TopNav current="myshop" shopName={user} userEmail={userEmail} onNavigate={navigate} onLogout={handleLogout} />
           <main className="w-full flex-1">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
@@ -161,7 +161,7 @@ function AppInner() {
   // Shop owner mode
   return (
     <ToastProvider>
-      <div className="min-h-screen bg-gray-50 text-gray-900 flex flex-col">
+      <div className="min-h-screen bg-stone-50 text-stone-900 flex flex-col">
         <TopNav
           current={currentKey}
           shopName={myShops[0]?.name || user}

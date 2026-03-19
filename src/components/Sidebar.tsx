@@ -71,33 +71,32 @@ export const TopNav: React.FC<Props> = ({ current, shopName, userEmail, onNaviga
   }, []);
 
   return (
-    <header className={`${isAdmin ? 'bg-gray-900' : 'bg-white'} border-b ${isAdmin ? 'border-gray-700' : 'border-gray-200'} sticky top-0 z-40`}>
+    <header className={`${isAdmin ? 'bg-stone-900' : 'bg-white'} border-b ${isAdmin ? 'border-stone-700' : 'border-stone-200'} sticky top-0 z-40`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-14">
           {/* Logo */}
           <div className="flex items-center gap-2 cursor-pointer shrink-0" onClick={() => onNavigate(defaultPage)}>
             <img src="/logo.png" alt="EYEVACS" className="w-10 h-10 rounded-lg object-cover" />
             <div>
-              <h1 className={`text-lg font-bold leading-none ${isAdmin ? 'text-white' : 'text-gray-900'}`}>EYEVACS</h1>
-              <div className="flex items-center gap-1.5 mt-0.5">
+              <div className="flex items-center gap-1.5">
                 {isAdmin && <span className="text-[9px] font-bold text-amber-400 bg-amber-400/20 px-1.5 py-0.5 rounded">ADMIN</span>}
-                <p className="text-xs text-gray-400 leading-none">
-                  {isAdmin ? '관리자 콘솔' : '우리동네 사장님'}
+                <p className={`text-xs font-bold leading-none ${isAdmin ? 'text-stone-400' : 'text-[#7f2929]'}`}>
+                  {isAdmin ? '관리자 콘솔' : <><span className="block">우리동네</span><span className="block">사장님</span></>}
                 </p>
               </div>
             </div>
           </div>
 
           {/* Nav Links — 중앙 */}
-          <nav className={`hidden lg:flex items-center justify-center flex-1 ${isAdmin ? 'gap-2 mx-6' : 'gap-2 mx-6'}`}>
+          <nav className={`hidden lg:flex items-center justify-center flex-1 self-stretch ${isAdmin ? 'gap-2 mx-6' : 'gap-2 mx-6'}`}>
             {NAV.map(({ key, label, icon: Icon }) => (
               <button
                 key={key}
                 onClick={() => onNavigate(key)}
-                className={`flex items-center gap-2 px-3 py-2.5 text-sm border-b-2 transition ${
+                className={`flex items-center gap-2 px-3 py-2.5 text-sm border-b-2 mb-[-1px] self-stretch transition ${
                   current === key
-                    ? isAdmin ? 'border-amber-400 text-amber-400 font-bold' : 'border-[#222] text-[#222] font-bold'
-                    : isAdmin ? 'border-transparent text-gray-400 hover:text-amber-400 font-medium' : 'border-transparent text-gray-500 hover:text-gray-900 font-medium'
+                    ? isAdmin ? 'border-amber-400 text-amber-400 font-bold' : 'border-[#7f2929] text-[#7f2929] font-bold'
+                    : isAdmin ? 'border-transparent text-stone-400 hover:text-amber-400 font-medium' : 'border-transparent text-stone-500 hover:text-[#7f2929] font-medium'
                 }`}
               >
                 {label}
@@ -110,7 +109,7 @@ export const TopNav: React.FC<Props> = ({ current, shopName, userEmail, onNaviga
             <button
               onClick={() => setLangOpen(!langOpen)}
               className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium transition ${
-                isAdmin ? 'text-gray-400 hover:bg-white/10' : 'text-gray-500 hover:bg-gray-100'
+                isAdmin ? 'text-stone-400 hover:bg-white/10' : 'text-stone-500 hover:bg-stone-100'
               }`}
             >
               <Globe className="w-3.5 h-3.5" />
@@ -121,7 +120,7 @@ export const TopNav: React.FC<Props> = ({ current, shopName, userEmail, onNaviga
             </button>
             {langOpen && (
               <div className={`absolute right-0 top-full mt-1 w-36 rounded-lg shadow-sm border overflow-hidden z-50 animate-fade-in ${
-                isAdmin ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'
+                isAdmin ? 'bg-stone-800 border-stone-700' : 'bg-white border-stone-200'
               }`}>
                 {[
                   { code: 'ko', label: '한국어', flag: '🇰🇷' },
@@ -132,7 +131,7 @@ export const TopNav: React.FC<Props> = ({ current, shopName, userEmail, onNaviga
                     key={code}
                     onClick={() => { setGoogleTranslateLang(code); setLangOpen(false); }}
                     className={`w-full flex items-center gap-2 px-3 py-2 text-xs font-medium transition ${
-                      isAdmin ? 'text-gray-300 hover:bg-gray-700' : 'text-gray-700 hover:bg-gray-50'
+                      isAdmin ? 'text-stone-300 hover:bg-stone-700' : 'text-stone-700 hover:bg-stone-50'
                     }`}
                   >
                     <span>{flag}</span>
@@ -149,19 +148,19 @@ export const TopNav: React.FC<Props> = ({ current, shopName, userEmail, onNaviga
               onClick={() => setMenuOpen(!menuOpen)}
               className={`flex items-center gap-2 px-3 py-1.5 rounded-lg transition ${
                 menuOpen
-                  ? isAdmin ? 'bg-white/10' : 'bg-gray-100'
-                  : isAdmin ? 'hover:bg-white/5' : 'hover:bg-gray-50'
+                  ? isAdmin ? 'bg-white/10' : 'bg-stone-100'
+                  : isAdmin ? 'hover:bg-white/5' : 'hover:bg-stone-50'
               }`}
             >
               <div className="hidden sm:block text-left">
-                <span className={`text-sm font-medium block leading-none ${isAdmin ? 'text-white' : 'text-gray-700'}`}>
+                <span className={`text-sm font-medium block leading-none ${isAdmin ? 'text-white' : 'text-stone-700'}`}>
                   {isAdmin ? '관리자' : `${shopName} 사장님`}
                 </span>
                 {isAdmin && (
-                  <span className="text-xs text-gray-400 leading-none">admin@gmail.com</span>
+                  <span className="text-xs text-stone-400 leading-none">admin@gmail.com</span>
                 )}
               </div>
-              <svg className={`w-4 h-4 transition ${menuOpen ? 'rotate-180' : ''} ${isAdmin ? 'text-gray-400' : 'text-gray-300'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className={`w-4 h-4 transition ${menuOpen ? 'rotate-180' : ''} ${isAdmin ? 'text-stone-400' : 'text-stone-300'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
               </svg>
             </button>
@@ -169,15 +168,15 @@ export const TopNav: React.FC<Props> = ({ current, shopName, userEmail, onNaviga
             {/* Dropdown Menu */}
             {menuOpen && (
               <div className={`absolute right-0 top-full mt-2 w-56 rounded-lg shadow-sm border overflow-hidden z-50 animate-fade-in ${
-                isAdmin ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'
+                isAdmin ? 'bg-stone-800 border-stone-700' : 'bg-white border-stone-200'
               }`}>
                 {/* Header */}
-                <div className={`px-4 py-3 border-b ${isAdmin ? 'border-gray-700' : 'border-gray-100'}`}>
-                  <p className={`text-sm font-semibold ${isAdmin ? 'text-white' : 'text-gray-900'}`}>
+                <div className={`px-4 py-3 border-b ${isAdmin ? 'border-stone-700' : 'border-stone-100'}`}>
+                  <p className={`text-sm font-semibold ${isAdmin ? 'text-white' : 'text-stone-900'}`}>
                     {isAdmin ? '관리자' : `${shopName} 사장님`}
                   </p>
                   {isAdmin && (
-                    <p className="text-xs mt-0.5 text-gray-400">admin@gmail.com</p>
+                    <p className="text-xs mt-0.5 text-stone-400">admin@gmail.com</p>
                   )}
                 </div>
 
@@ -211,7 +210,7 @@ export const TopNav: React.FC<Props> = ({ current, shopName, userEmail, onNaviga
                   )}
                 </div>
 
-                <div className={`border-t ${isAdmin ? 'border-gray-700' : 'border-gray-100'}`}>
+                <div className={`border-t ${isAdmin ? 'border-stone-700' : 'border-stone-100'}`}>
                   <DropdownItem
                     icon={<LogOut className="w-4 h-4" />}
                     label="로그아웃"
@@ -233,8 +232,8 @@ export const TopNav: React.FC<Props> = ({ current, shopName, userEmail, onNaviga
               onClick={() => onNavigate(key)}
               className={`flex items-center gap-1.5 px-3 py-2.5 text-sm whitespace-nowrap border-b-2 transition ${
                 current === key
-                  ? isAdmin ? 'border-amber-400 text-amber-400 font-bold' : 'border-[#222] text-[#222] font-bold'
-                  : isAdmin ? 'border-transparent text-gray-400 hover:text-amber-400 font-medium' : 'border-transparent text-gray-500 hover:text-gray-900 font-medium'
+                  ? isAdmin ? 'border-amber-400 text-amber-400 font-bold' : 'border-[#7f2929] text-[#7f2929] font-bold'
+                  : isAdmin ? 'border-transparent text-stone-400 hover:text-amber-400 font-medium' : 'border-transparent text-stone-500 hover:text-[#7f2929] font-medium'
               }`}
             >
               {label}
@@ -258,7 +257,7 @@ const DropdownItem: React.FC<{
     className={`w-full flex items-center gap-3 px-4 py-2.5 text-sm transition ${
       danger
         ? dark ? 'text-red-400 hover:bg-red-500/10' : 'text-red-500 hover:bg-red-50'
-        : dark ? 'text-gray-300 hover:bg-white/5' : 'text-gray-700 hover:bg-gray-50'
+        : dark ? 'text-stone-300 hover:bg-white/5' : 'text-stone-700 hover:bg-stone-50'
     }`}
   >
     {icon}

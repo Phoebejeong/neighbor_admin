@@ -96,14 +96,14 @@ export const AdminCategoryStatsPage: React.FC<Props> = ({ shops, ads, shopping }
     <div>
       <div className="mb-6">
         <h2 className="text-xl font-bold pl-1">업종별 통계</h2>
-        <p className="text-sm text-gray-500 mt-1">업종별 광고 효과 · 상가 분포 분석</p>
+        <p className="text-sm text-stone-500 mt-1">업종별 광고 효과 · 상가 분포 분석</p>
       </div>
 
       {/* Top Highlights */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
         {topByViews && (
           <HighlightCard
-            icon={<Eye className="w-5 h-5 text-cyan-500" />}
+            icon={<Eye className="w-5 h-5 text-[#B85C38]" />}
             label="조회수 1위 업종"
             value={topByViews.category}
             sub={`${formatMoney(topByViews.totalViews)}회 · 평균 ${formatMoney(topByViews.avgViews)}회`}
@@ -121,7 +121,7 @@ export const AdminCategoryStatsPage: React.FC<Props> = ({ shops, ads, shopping }
         )}
         {topByShops && (
           <HighlightCard
-            icon={<Store className="w-5 h-5 text-emerald-500" />}
+            icon={<Store className="w-5 h-5 text-[#7f2929]" />}
             label="상가수 1위 업종"
             value={topByShops.category}
             sub={`${topByShops.shopCount}개 상가`}
@@ -132,27 +132,27 @@ export const AdminCategoryStatsPage: React.FC<Props> = ({ shops, ads, shopping }
 
       {/* Category Comparison Chart */}
       <div className="bg-white rounded-lg shadow-sm p-5 mb-6">
-        <h3 className="text-base font-bold text-gray-800 mb-4">업종별 조회수 비교</h3>
+        <h3 className="text-base font-bold text-stone-800 mb-4">업종별 조회수 비교</h3>
         <div className="space-y-3">
           {categoryData.map((cat, i) => {
             const pct = Math.round((cat.totalViews / maxViews) * 100);
             return (
               <div key={cat.category} className="flex items-center gap-4">
                 <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ${
-                  i < 3 ? 'bg-amber-100 text-amber-700' : 'bg-gray-100 text-gray-500'
+                  i < 3 ? 'bg-amber-100 text-amber-700' : 'bg-stone-100 text-stone-500'
                 }`}>{i + 1}</span>
-                <span className="w-20 text-sm font-bold text-gray-700 shrink-0">{cat.category}</span>
+                <span className="w-20 text-sm font-bold text-stone-700 shrink-0">{cat.category}</span>
                 <div className="flex-1">
-                  <div className="w-full h-7 bg-gray-100 rounded-full overflow-hidden">
+                  <div className="w-full h-7 bg-stone-100 rounded-full overflow-hidden">
                     <div
-                      className="h-full bg-cyan-500 rounded-full flex items-center justify-end pr-2 transition-all"
+                      className="h-full bg-[#B85C38] rounded-full flex items-center justify-end pr-2 transition-all"
                       style={{ width: `${Math.max(pct, 5)}%` }}
                     >
                       {pct > 15 && <span className="text-xs font-bold text-white">{formatMoney(cat.totalViews)}</span>}
                     </div>
                   </div>
                 </div>
-                {pct <= 15 && <span className="text-sm font-bold text-gray-600 w-16 text-right">{formatMoney(cat.totalViews)}</span>}
+                {pct <= 15 && <span className="text-sm font-bold text-stone-600 w-16 text-right">{formatMoney(cat.totalViews)}</span>}
               </div>
             );
           })}
@@ -161,18 +161,18 @@ export const AdminCategoryStatsPage: React.FC<Props> = ({ shops, ads, shopping }
 
       {/* Revenue Comparison */}
       <div className="bg-white rounded-lg shadow-sm p-5 mb-6">
-        <h3 className="text-base font-bold text-gray-800 mb-4">업종별 매출 비교</h3>
+        <h3 className="text-base font-bold text-stone-800 mb-4">업종별 매출 비교</h3>
         <div className="space-y-3">
           {[...categoryData].sort((a, b) => b.totalRevenue - a.totalRevenue).map((cat, i) => {
             const pct = Math.round((cat.totalRevenue / maxRevenue) * 100);
             return (
               <div key={cat.category} className="flex items-center gap-4">
                 <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ${
-                  i < 3 ? 'bg-amber-100 text-amber-700' : 'bg-gray-100 text-gray-500'
+                  i < 3 ? 'bg-amber-100 text-amber-700' : 'bg-stone-100 text-stone-500'
                 }`}>{i + 1}</span>
-                <span className="w-20 text-sm font-bold text-gray-700 shrink-0">{cat.category}</span>
+                <span className="w-20 text-sm font-bold text-stone-700 shrink-0">{cat.category}</span>
                 <div className="flex-1">
-                  <div className="w-full h-7 bg-gray-100 rounded-full overflow-hidden">
+                  <div className="w-full h-7 bg-stone-100 rounded-full overflow-hidden">
                     <div
                       className="h-full bg-amber-500 rounded-full flex items-center justify-end pr-2 transition-all"
                       style={{ width: `${Math.max(pct, 5)}%` }}
@@ -181,7 +181,7 @@ export const AdminCategoryStatsPage: React.FC<Props> = ({ shops, ads, shopping }
                     </div>
                   </div>
                 </div>
-                {pct <= 20 && <span className="text-sm font-bold text-gray-600 w-20 text-right">{formatMoney(cat.totalRevenue)}원</span>}
+                {pct <= 20 && <span className="text-sm font-bold text-stone-600 w-20 text-right">{formatMoney(cat.totalRevenue)}원</span>}
               </div>
             );
           })}
@@ -190,40 +190,40 @@ export const AdminCategoryStatsPage: React.FC<Props> = ({ shops, ads, shopping }
 
       {/* Detailed Table */}
       <div className="bg-white rounded-lg shadow-sm p-5">
-        <h3 className="text-base font-bold text-gray-800 mb-4">업종별 상세 현황</h3>
+        <h3 className="text-base font-bold text-stone-800 mb-4">업종별 상세 현황</h3>
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-gray-200">
-                <th className="text-left py-3 px-2 text-xs font-bold text-gray-500">업종</th>
-                <th className="text-right py-3 px-2 text-xs font-bold text-gray-500">상가수</th>
-                <th className="text-right py-3 px-2 text-xs font-bold text-gray-500">광고수</th>
-                <th className="text-right py-3 px-2 text-xs font-bold text-gray-500">진행중</th>
-                <th className="text-right py-3 px-2 text-xs font-bold text-gray-500">총 조회</th>
-                <th className="text-right py-3 px-2 text-xs font-bold text-gray-500">평균 조회</th>
-                <th className="text-right py-3 px-2 text-xs font-bold text-gray-500">CPV</th>
-                <th className="text-right py-3 px-2 text-xs font-bold text-gray-500">총 매출</th>
+              <tr className="border-b border-stone-200">
+                <th className="text-left py-3 px-2 text-xs font-bold text-stone-500">업종</th>
+                <th className="text-right py-3 px-2 text-xs font-bold text-stone-500">상가수</th>
+                <th className="text-right py-3 px-2 text-xs font-bold text-stone-500">광고수</th>
+                <th className="text-right py-3 px-2 text-xs font-bold text-stone-500">진행중</th>
+                <th className="text-right py-3 px-2 text-xs font-bold text-stone-500">총 조회</th>
+                <th className="text-right py-3 px-2 text-xs font-bold text-stone-500">평균 조회</th>
+                <th className="text-right py-3 px-2 text-xs font-bold text-stone-500">CPV</th>
+                <th className="text-right py-3 px-2 text-xs font-bold text-stone-500">총 매출</th>
               </tr>
             </thead>
             <tbody>
               {categoryData.map(cat => (
-                <tr key={cat.category} className="border-b border-gray-50 hover:bg-gray-50 transition">
+                <tr key={cat.category} className="border-b border-stone-50 hover:bg-stone-50 transition">
                   <td className="py-3 px-2">
                     <div className="flex items-center gap-2">
-                      <Tag className="w-4 h-4 text-gray-300" />
-                      <span className="font-bold text-gray-800">{cat.category}</span>
+                      <Tag className="w-4 h-4 text-stone-300" />
+                      <span className="font-bold text-stone-800">{cat.category}</span>
                     </div>
                   </td>
                   <td className="py-3 px-2 text-right font-bold">{cat.shopCount}</td>
                   <td className="py-3 px-2 text-right font-bold">{cat.adCount}</td>
                   <td className="py-3 px-2 text-right">
-                    <span className={`font-bold ${cat.activeAds > 0 ? 'text-emerald-600' : 'text-gray-400'}`}>
+                    <span className={`font-bold ${cat.activeAds > 0 ? 'text-[#7f2929]' : 'text-stone-400'}`}>
                       {cat.activeAds}
                     </span>
                   </td>
-                  <td className="py-3 px-2 text-right font-bold text-cyan-600">{formatMoney(cat.totalViews)}</td>
-                  <td className="py-3 px-2 text-right text-gray-600">{formatMoney(cat.avgViews)}</td>
-                  <td className="py-3 px-2 text-right text-gray-600">{cat.avgCpv > 0 ? `${formatMoney(cat.avgCpv)}원` : '-'}</td>
+                  <td className="py-3 px-2 text-right font-bold text-[#B85C38]">{formatMoney(cat.totalViews)}</td>
+                  <td className="py-3 px-2 text-right text-stone-600">{formatMoney(cat.avgViews)}</td>
+                  <td className="py-3 px-2 text-right text-stone-600">{cat.avgCpv > 0 ? `${formatMoney(cat.avgCpv)}원` : '-'}</td>
                   <td className="py-3 px-2 text-right font-bold text-amber-600">{formatMoney(cat.totalRevenue)}원</td>
                 </tr>
               ))}
@@ -239,9 +239,9 @@ const HighlightCard: React.FC<{ icon: React.ReactNode; label: string; value: str
   <div className="bg-white rounded-lg shadow-sm p-5">
     <div className="flex items-center gap-2 mb-2">
       {icon}
-      <span className="text-xs text-gray-400 font-medium">{label}</span>
+      <span className="text-xs text-stone-400 font-medium">{label}</span>
     </div>
-    <p className="text-xl font-bold text-gray-900">{value}</p>
-    <p className="text-xs text-gray-400 mt-1">{sub}</p>
+    <p className="text-xl font-bold text-stone-900">{value}</p>
+    <p className="text-xs text-stone-400 mt-1">{sub}</p>
   </div>
 );

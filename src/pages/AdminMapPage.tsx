@@ -72,7 +72,7 @@ export const AdminMapPage: React.FC<Props> = ({ shops }) => {
     <div>
       <div className="mb-6">
         <h2 className="text-xl font-bold pl-1">상가 밀집 지도</h2>
-        <p className="text-sm text-gray-500 mt-1">지역별 상가 분포 · 아파트 커버리지 현황</p>
+        <p className="text-sm text-stone-500 mt-1">지역별 상가 분포 · 아파트 커버리지 현황</p>
       </div>
 
       {/* Zone Cards */}
@@ -86,32 +86,32 @@ export const AdminMapPage: React.FC<Props> = ({ shops }) => {
             }`}
           >
             <div className="flex items-center justify-between mb-3">
-              <h3 className="text-lg font-bold text-gray-900">{zone.name}</h3>
+              <h3 className="text-lg font-bold text-stone-900">{zone.name}</h3>
               <div className={`w-3 h-3 rounded-full ${
-                zone.shops.length >= 5 ? 'bg-emerald-500' : zone.shops.length >= 2 ? 'bg-amber-400' : 'bg-red-400'
+                zone.shops.length >= 5 ? 'bg-[#7f2929]' : zone.shops.length >= 2 ? 'bg-amber-400' : 'bg-red-400'
               }`} />
             </div>
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <p className="text-xs text-gray-400">등록 상가</p>
-                <p className="text-xl font-bold text-blue-600">{zone.shops.length}개</p>
+                <p className="text-xs text-stone-400">등록 상가</p>
+                <p className="text-xl font-bold text-[#7f2929]">{zone.shops.length}개</p>
               </div>
               <div>
-                <p className="text-xs text-gray-400">아파트 단지</p>
-                <p className="text-xl font-bold text-gray-800">{zone.apartments.length}개</p>
+                <p className="text-xs text-stone-400">아파트 단지</p>
+                <p className="text-xl font-bold text-stone-800">{zone.apartments.length}개</p>
               </div>
               <div>
-                <p className="text-xs text-gray-400">총 세대수</p>
-                <p className="text-sm font-bold text-gray-700">{formatMoney(zone.totalHouseholds)}</p>
+                <p className="text-xs text-stone-400">총 세대수</p>
+                <p className="text-sm font-bold text-stone-700">{formatMoney(zone.totalHouseholds)}</p>
               </div>
               <div>
-                <p className="text-xs text-gray-400">앱 설치율</p>
-                <p className="text-sm font-bold text-purple-600">{zone.coverageRate}%</p>
+                <p className="text-xs text-stone-400">앱 설치율</p>
+                <p className="text-sm font-bold text-[#B85C38]">{zone.coverageRate}%</p>
               </div>
             </div>
             <div className="mt-3 flex items-center gap-1.5">
-              <Signal className="w-3.5 h-3.5 text-gray-400" />
-              <span className="text-xs text-gray-500">상가/단지 비율: <strong>{zone.density}</strong></span>
+              <Signal className="w-3.5 h-3.5 text-stone-400" />
+              <span className="text-xs text-stone-500">상가/단지 비율: <strong>{zone.density}</strong></span>
             </div>
           </button>
         ))}
@@ -120,23 +120,23 @@ export const AdminMapPage: React.FC<Props> = ({ shops }) => {
       {/* Selected Zone Detail */}
       {selectedZoneData && (
         <div className="bg-white rounded-lg shadow-sm p-5 mb-6">
-          <h3 className="text-base font-bold text-gray-800 mb-4">{selectedZoneData.name} 상세</h3>
+          <h3 className="text-base font-bold text-stone-800 mb-4">{selectedZoneData.name} 상세</h3>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* Category Distribution */}
             <div>
-              <h4 className="text-sm font-bold text-gray-600 mb-3">업종 분포</h4>
+              <h4 className="text-sm font-bold text-stone-600 mb-3">업종 분포</h4>
               {Object.keys(selectedZoneData.catCount).length === 0 ? (
-                <p className="text-sm text-gray-400">등록된 상가가 없습니다</p>
+                <p className="text-sm text-stone-400">등록된 상가가 없습니다</p>
               ) : (
                 <div className="space-y-2">
                   {Object.entries(selectedZoneData.catCount)
                     .sort(([, a], [, b]) => b - a)
                     .map(([cat, count]) => (
                       <div key={cat} className="flex items-center gap-3">
-                        <span className="text-sm text-gray-700 w-16 font-medium">{cat}</span>
-                        <div className="flex-1 h-6 bg-gray-100 rounded-full overflow-hidden">
+                        <span className="text-sm text-stone-700 w-16 font-medium">{cat}</span>
+                        <div className="flex-1 h-6 bg-stone-100 rounded-full overflow-hidden">
                           <div
-                            className="h-full bg-blue-500 rounded-full flex items-center justify-end pr-2"
+                            className="h-full bg-[#7f2929] rounded-full flex items-center justify-end pr-2"
                             style={{ width: `${Math.max(20, (count / selectedZoneData.shops.length) * 100)}%` }}
                           >
                             <span className="text-xs font-bold text-white">{count}</span>
@@ -151,16 +151,16 @@ export const AdminMapPage: React.FC<Props> = ({ shops }) => {
 
             {/* Shops List */}
             <div>
-              <h4 className="text-sm font-bold text-gray-600 mb-3">등록 상가 목록</h4>
+              <h4 className="text-sm font-bold text-stone-600 mb-3">등록 상가 목록</h4>
               <div className="space-y-2 max-h-60 overflow-y-auto">
                 {selectedZoneData.shops.map(shop => (
-                  <div key={shop.id} className="flex items-center gap-3 p-2 rounded-lg border border-gray-100">
-                    <Store className="w-4 h-4 text-gray-400 shrink-0" />
+                  <div key={shop.id} className="flex items-center gap-3 p-2 rounded-lg border border-stone-100">
+                    <Store className="w-4 h-4 text-stone-400 shrink-0" />
                     <div className="flex-1 min-w-0">
-                      <span className="text-sm font-bold text-gray-800">{shop.name}</span>
-                      <span className="text-xs text-gray-400 ml-2">{shop.category}</span>
+                      <span className="text-sm font-bold text-stone-800">{shop.name}</span>
+                      <span className="text-xs text-stone-400 ml-2">{shop.category}</span>
                     </div>
-                    <span className="text-xs text-gray-400 shrink-0">{shop.targetApartments.length}개 단지</span>
+                    <span className="text-xs text-stone-400 shrink-0">{shop.targetApartments.length}개 단지</span>
                   </div>
                 ))}
               </div>
@@ -171,52 +171,52 @@ export const AdminMapPage: React.FC<Props> = ({ shops }) => {
 
       {/* Apartment Coverage Table */}
       <div className="bg-white rounded-lg shadow-sm p-5">
-        <h3 className="text-base font-bold text-gray-800 mb-4">단지별 상가 밀집도</h3>
+        <h3 className="text-base font-bold text-stone-800 mb-4">단지별 상가 밀집도</h3>
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-gray-200">
-                <th className="text-left py-3 px-2 text-xs font-bold text-gray-500">아파트</th>
-                <th className="text-right py-3 px-2 text-xs font-bold text-gray-500">세대수</th>
-                <th className="text-right py-3 px-2 text-xs font-bold text-gray-500">설치율</th>
-                <th className="text-right py-3 px-2 text-xs font-bold text-gray-500">활성유저</th>
-                <th className="text-right py-3 px-2 text-xs font-bold text-gray-500">주변상가</th>
-                <th className="text-left py-3 px-2 text-xs font-bold text-gray-500">업종 현황</th>
+              <tr className="border-b border-stone-200">
+                <th className="text-left py-3 px-2 text-xs font-bold text-stone-500">아파트</th>
+                <th className="text-right py-3 px-2 text-xs font-bold text-stone-500">세대수</th>
+                <th className="text-right py-3 px-2 text-xs font-bold text-stone-500">설치율</th>
+                <th className="text-right py-3 px-2 text-xs font-bold text-stone-500">활성유저</th>
+                <th className="text-right py-3 px-2 text-xs font-bold text-stone-500">주변상가</th>
+                <th className="text-left py-3 px-2 text-xs font-bold text-stone-500">업종 현황</th>
               </tr>
             </thead>
             <tbody>
               {aptDetails.map(apt => (
-                <tr key={apt.id} className="border-b border-gray-50 hover:bg-gray-50 transition">
+                <tr key={apt.id} className="border-b border-stone-50 hover:bg-stone-50 transition">
                   <td className="py-3 px-2">
                     <div className="flex items-center gap-2">
-                      <Building2 className="w-4 h-4 text-gray-300 shrink-0" />
+                      <Building2 className="w-4 h-4 text-stone-300 shrink-0" />
                       <div>
-                        <p className="font-bold text-gray-800">{apt.name}</p>
-                        <p className="text-xs text-gray-400">{apt.address}</p>
+                        <p className="font-bold text-stone-800">{apt.name}</p>
+                        <p className="text-xs text-stone-400">{apt.address}</p>
                       </div>
                     </div>
                   </td>
                   <td className="py-3 px-2 text-right font-bold">{formatMoney(apt.households)}</td>
                   <td className="py-3 px-2 text-right">
-                    <span className={`font-bold ${apt.installRate >= 60 ? 'text-emerald-600' : apt.installRate >= 40 ? 'text-amber-600' : 'text-red-500'}`}>
+                    <span className={`font-bold ${apt.installRate >= 60 ? 'text-[#7f2929]' : apt.installRate >= 40 ? 'text-amber-600' : 'text-red-500'}`}>
                       {apt.installRate}%
                     </span>
                   </td>
-                  <td className="py-3 px-2 text-right font-bold text-blue-600">{formatMoney(apt.activeUsers || 0)}</td>
+                  <td className="py-3 px-2 text-right font-bold text-[#7f2929]">{formatMoney(apt.activeUsers || 0)}</td>
                   <td className="py-3 px-2 text-right">
-                    <span className={`text-lg font-bold ${apt.nearbyShops >= 4 ? 'text-emerald-600' : apt.nearbyShops >= 2 ? 'text-amber-600' : 'text-red-500'}`}>
+                    <span className={`text-lg font-bold ${apt.nearbyShops >= 4 ? 'text-[#7f2929]' : apt.nearbyShops >= 2 ? 'text-amber-600' : 'text-red-500'}`}>
                       {apt.nearbyShops}
                     </span>
                   </td>
                   <td className="py-3 px-2">
                     <div className="flex flex-wrap gap-1">
                       {Object.entries(apt.catCount).map(([cat, cnt]) => (
-                        <span key={cat} className="text-xs bg-gray-100 text-gray-600 px-1.5 py-0.5 rounded font-medium">
+                        <span key={cat} className="text-xs bg-stone-100 text-stone-600 px-1.5 py-0.5 rounded font-medium">
                           {cat} {cnt}
                         </span>
                       ))}
                       {Object.keys(apt.catCount).length === 0 && (
-                        <span className="text-xs text-gray-300">없음</span>
+                        <span className="text-xs text-stone-300">없음</span>
                       )}
                     </div>
                   </td>
